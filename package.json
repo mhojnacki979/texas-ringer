@@ -1,0 +1,17 @@
+{
+  "name": "eyesonscore-series-rankings",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Standalone public leaderboard aggregating EyesonScore completed scores into best-3-of-N series rankings",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  }
+}
