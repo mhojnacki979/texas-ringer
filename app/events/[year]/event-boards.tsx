@@ -2,10 +2,36 @@
 
 import { useState } from 'react'
 import type { EventDivision } from '@/data/events'
+import { getPodium } from '@/data/events'
 import { DivisionBracket } from './division-bracket'
 import { RoundsView } from './rounds-view'
 
 type ViewMode = 'bracket' | 'rounds' | 'qualification'
+
+const PLACES = [
+  { key: 'first', label: '1st', cls: 'is-gold' },
+  { key: 'second', label: '2nd', cls: 'is-silver' },
+  { key: 'third', label: '3rd', cls: 'is-bronze' },
+] as const
+
+function Podium({ division }: { division: EventDivision }) {
+  const podium = getPodium(division)
+  const places = PLACES.filter((p) => podium[p.key] !== null)
+  if (places.length === 0) return null
+  return (
+    <div className="podium" aria-label={`${division.name} podium`}>
+      <span className="podium-eyebrow">{division.name} · Final Placings</span>
+      <div className="podium-rows">
+        {places.map((p) => (
+          <div className={`podium-row ${p.cls}`} key={p.key}>
+            <span className="podium-place">{p.label}</span>
+            <span className="podium-name">{podium[p.key]}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 function QualTable({ division }: { division: EventDivision }) {
   return (
@@ -91,12 +117,7 @@ export function EventBoards({ divisions }: { divisions: EventDivision[] }) {
         )}
       </div>
 
-      {active.champion !== null && (
-        <div className="champion-card">
-          <span className="champion-eyebrow">{active.name} · Champion</span>
-          <span className="champion-name">{active.champion}</span>
-        </div>
-      )}
+      <Podium division={active} />
 
       {showBracket && <DivisionBracket division={active} />}
       {view === 'rounds' && hasBracket && <RoundsView division={active} />}
