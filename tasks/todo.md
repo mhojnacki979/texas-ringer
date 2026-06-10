@@ -28,7 +28,8 @@ EyesonScore into "best 3 of N" series rankings.
        idempotent `pnpm db:import <csv>`, DB-backed data contract (standings computed on read;
        RankingSnapshot deferred until data volume demands it)
 - [x] 6. Public UI — series index, leaderboard (segment switcher), archer detail, branded 404
-- [ ] 7. Admin path — upload CSV via web page (CLI works today), create/manage series
+- [x] 7. Admin path — /admin upload page + token-protected POST /api/import
+       (Bearer ADMIN_TOKEN, multipart or raw text/csv — raw body is the future webhook entry)
 - [ ] 8. Deploy — Railway (switch Prisma datasource to Postgres), series.eyesonscore.com DNS
 - [ ] 9. LATER: auto-pull / webhooks from EyesonScore behind the same import boundary
 

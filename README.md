@@ -15,7 +15,8 @@ if they beat the current lowest counted score. Leaderboards are segmented by
 - ✅ CSV import (parse + validate + group + rank) — fully tested
 - ✅ Persistence — Prisma + SQLite (Postgres-compatible schema), idempotent CSV import
 - ✅ Public web UI — Next.js 15: series index, segmented leaderboards, archer detail
-- ⏳ Web-based CSV upload (CLI works today), Railway deploy, auto-pull from Eyes on Score
+- ✅ Admin upload — `/admin` page + token-protected `POST /api/import`
+- ⏳ Railway deploy, auto-pull from Eyes on Score
 
 Data is imported manually via CSV for now. Automated pull/webhooks from Eyes on
 Score will plug in behind the same import boundary later.
@@ -33,6 +34,16 @@ pnpm test                       # run the suite
 pnpm standings <path-to.csv>    # offline: rank a CSV and print standings (no db)
 pnpm standings examples/sample-series.csv
 ```
+
+## Admin import
+
+Set `ADMIN_TOKEN` in `.env` (see `.env.example`). Then either:
+
+- **Browser:** visit `/admin`, paste the token, pick a CSV, import.
+- **API:** `curl -X POST -H "Authorization: Bearer $ADMIN_TOKEN" -F "file=@scores.csv" <site>/api/import`
+  (a raw `text/csv` body also works — this is the future webhook entry point).
+
+Responses include rows imported and any skipped rows with line numbers.
 
 ## CSV format
 
