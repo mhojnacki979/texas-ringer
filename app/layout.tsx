@@ -22,9 +22,9 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Eyes on Score — Series Rankings',
+  title: 'The Texas Ringer — Series Rankings',
   description:
-    'Official best-3-of-N series standings for archery tournaments, powered by EyesonScore.',
+    'Official best-3-of-N archery series standings for The Texas Ringer, powered by Eyes on Score.',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -35,12 +35,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <header className="site-header">
           <div className="site-header-inner">
             <Link href="/" className="wordmark">
-              Eyes on Score <span className="wordmark-accent">—</span> Series Rankings
+              The Texas <span className="wordmark-accent">Ringer</span>
             </Link>
           </div>
         </header>
         <main className="site-main">{children}</main>
-        <footer className="site-footer">Powered by EyesonScore · Best 3 of N series standings</footer>
+        <footer className="site-footer">
+          The Texas Ringer · Powered by Eyes on Score · Best 3 of N series standings
+        </footer>
       </body>
     </html>
   )

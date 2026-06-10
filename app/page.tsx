@@ -9,7 +9,7 @@ export default async function HomePage() {
   return (
     <>
       <span className="eyebrow">Live Standings</span>
-      <h1 className="page-title">Series Rankings</h1>
+      <h1 className="page-title">The Texas Ringer</h1>
       <p className="page-subtitle">
         Best 3 of N — only an archer&apos;s three highest event scores count toward their rank.
       </p>

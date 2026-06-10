@@ -1,7 +1,7 @@
-# Eyes on Score — Series Rankings
+# The Texas Ringer — Series Rankings
 
-Standalone public leaderboard that aggregates completed tournament scores from
-Eyes on Score into **best-3-of-N** series rankings.
+Standalone public leaderboard ("The Texas Ringer") that aggregates completed
+tournament scores from Eyes on Score into **best-3-of-N** series rankings.
 
 An archer needs at least **3 events** in a series to be officially ranked. Their
 ranking total is the sum of their **best 3 scores**; additional events only count
