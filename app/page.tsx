@@ -75,9 +75,14 @@ function AnnualEvent() {
           </div>
         ))}
       </div>
-      <a href="https://www.texasringer.com" className="button">
-        Register at texasringer.com
-      </a>
+      <div className="cta-row">
+        <a href="https://www.texasringer.com" className="button">
+          Register at texasringer.com
+        </a>
+        <Link href="/events" className="button button-outline">
+          Previous Events &amp; Results
+        </Link>
+      </div>
     </section>
   )
 }
