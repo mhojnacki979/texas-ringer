@@ -34,9 +34,9 @@ const anton = Anton({
 })
 
 export const metadata: Metadata = {
-  title: 'The Texas Ringer — Series Rankings',
+  title: 'The Texas Ringer — Archery Tournament',
   description:
-    'Official Best of Three Series archery standings for The Texas Ringer, powered by Eyes on Score.',
+    'The Texas Ringer — a flagship annual archery tournament. Brackets, champions, and results, powered by Eyes on Score.',
 }
 
 /** Official Texas Ringer arrowhead mark (Texas flag + feather). */
@@ -69,25 +69,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </span>
             </Link>
             <nav className="site-nav" aria-label="Primary">
-              <Link href="/" className="site-nav-link is-active">
-                Series
+              <Link href="/" className="site-nav-link">
+                Home
               </Link>
               <Link href="/events" className="site-nav-link">
-                Previous Events
+                Results
               </Link>
-              <a href="https://www.texasringer.com/blank" className="site-nav-link">
-                Rules
+              <a href="https://www.texasringer.com" className="site-nav-link">
+                Register
               </a>
             </nav>
           </div>
         </header>
         <main className="site-main">{children}</main>
-        <footer className="site-footer">
-          The Texas Ringer · Powered by Eyes on Score · Best of Three Series ·{' '}
-          <Link href="/admin" className="muted">
-            Admin
-          </Link>
-        </footer>
+        <footer className="site-footer">The Texas Ringer · Powered by Eyes on Score</footer>
       </body>
     </html>
   )

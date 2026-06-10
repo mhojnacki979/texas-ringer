@@ -1,0 +1,169 @@
+/**
+ * Pull annual-event results straight from the Eyes on Score API into the
+ * static JSON the site reads (src/data/events/<year>.json).
+ *
+ *   EOS_API_TOKEN=... pnpm sync:events
+ *
+ * Source of truth for Previous Events. Round names come directly from EOS's
+ * bracket_details (Qualification / 1/8th Round / .../ Finals), not inference.
+ */
+import { writeFileSync } from 'node:fs'
+import path from 'node:path'
+
+const TOKEN = process.env.EOS_API_TOKEN
+if (TOKEN === undefined || TOKEN === '') {
+  console.error('EOS_API_TOKEN is required (see .env)')
+  process.exit(1)
+}
+
+const API = 'https://api.eyesonscore.com/api'
+const HEADERS = { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' }
+
+/** Annual events to sync: EOS tournament id + the year label for the file. */
+const TOURNAMENTS = [
+  { year: 2025, id: 'V0V0bVVGaUNzUjZrajNQN0p4eUU3QT09', name: '2025 Texas Ringer' },
+  { year: 2024, id: 'ZEp4ZUFsZm9ZSTBlb21YTnBNeXhlQT09', name: '2024 Texas Ringer' },
+] as const
+
+async function post(url: string): Promise<any> {
+  const res = await fetch(url, { method: 'POST', headers: HEADERS })
+  const json = await res.json()
+  if (json.status_code !== 200) throw new Error(`${url} -> ${json.message ?? res.status}`)
+  return json.data
+}
+
+function toInt(v: unknown): number {
+  const n = Number(v)
+  return Number.isFinite(n) ? Math.trunc(n) : 0
+}
+
+/** "Freestyle Compound Adult Open" -> { bowClass, ageClass }. */
+function splitGroup(group: string): { bowClass: string; ageClass: string } {
+  const core = group.replace(/\s+Open$/, '')
+  const parts = core.split(' ')
+  const ageClass = parts[parts.length - 1] ?? ''
+  const bowClass = parts.slice(0, -1).join(' ')
+  return { bowClass, ageClass }
+}
+
+function ends(row: any): number[] {
+  const total = toInt(row.total_ends)
+  const out: number[] = []
+  for (let i = 1; i <= total; i++) out.push(toInt(row[`end_${i}`]))
+  return out
+}
+
+function rowsOf(sortingResult: any, group: string): any[] {
+  const inner = sortingResult?.[group]
+  if (inner === undefined || inner === null) return []
+  return Object.values(inner)
+}
+
+function sessionDate(rows: any[]): string {
+  for (const r of rows) {
+    const m = /(\d{2})-(\d{2})-(\d{4})/.exec(String(r.session ?? ''))
+    if (m) return `${m[3]}-${m[1]}-${m[2]}`
+  }
+  return ''
+}
+
+async function syncTournament(t: (typeof TOURNAMENTS)[number]) {
+  const dropdown = await post(
+    `${API}/division_class_dropdown?id=${t.id}&for=show_bracketing_result`,
+  )
+  const bowClasses: string[] = dropdown.division_bow_class_list.bow_class
+  const ageClasses: string[] = dropdown.division_bow_class_list.division_id
+  // bracket_details[0] is the tournament itself (qualification); the rest are rounds.
+  const rounds: { id: string; name: string }[] = (dropdown.bracket_details ?? []).slice(1)
+
+  const qual = await post(`${API}/tournament_score_list?is_private=false&id=${t.id}&for_fav=true`)
+  const qualSorting = qual.sortingResult ?? {}
+
+  // Per-round score maps, fetched once per (round, bow, age).
+  const roundData = new Map<string, any>() // `${round.id}|${group}` -> sortingResult
+  for (const round of rounds) {
+    for (const bowClass of bowClasses) {
+      for (const ageClass of ageClasses) {
+        const group = `${bowClass} ${ageClass} Open`
+        const url =
+          `${API}/bracket_tournament_score_list?is_private=false&id=${round.id}` +
+          `&bow_class=${encodeURIComponent(bowClass)}&division=${encodeURIComponent(ageClass)}` +
+          `&for_fav=true&elimination_group=${encodeURIComponent(group)}`
+        const data = await post(url).catch(() => null)
+        if (data?.sortingResult) roundData.set(`${round.id}|${group}`, data.sortingResult)
+      }
+    }
+  }
+
+  const divisions: any[] = []
+  let archers = 0
+  let date = ''
+
+  for (const group of Object.keys(qualSorting)) {
+    const qualRows = rowsOf(qualSorting, group)
+    if (qualRows.length === 0) continue
+    archers += qualRows.length
+    if (date === '') date = sessionDate(qualRows)
+
+    const qualification = qualRows.map((r) => ({
+      rank: toInt(r.rank),
+      name: String(r.name ?? '').trim(),
+      avg: String(r.avg_count ?? ''),
+      score: toInt(r.total_score),
+    }))
+
+    const eliminationRounds: any[] = []
+    rounds.forEach((round, i) => {
+      const sr = roundData.get(`${round.id}|${group}`)
+      const rows = sr ? rowsOf(sr, group) : []
+      if (rows.length === 0) return
+      eliminationRounds.push({
+        round: i + 1,
+        name: round.name,
+        results: rows.map((r) => ({
+          rank: toInt(r.rank),
+          name: String(r.name ?? '').trim(),
+          ends: ends(r),
+          score: toInt(r.total_score),
+          winner: String(r.is_winner ?? '') === '1',
+        })),
+      })
+    })
+
+    let champion: string | null = null
+    const final = eliminationRounds[eliminationRounds.length - 1]
+    if (final !== undefined) {
+      const won = final.results.find((r: any) => r.winner) ??
+        final.results.find((r: any) => r.rank === 1)
+      champion = won ? won.name : null
+    }
+
+    divisions.push({ name: group, qualification, eliminationRounds, champion })
+  }
+
+  const out = {
+    year: t.year,
+    name: t.name,
+    venue: 'Texas Archery',
+    date: date || String(t.year),
+    archers,
+    divisions,
+  }
+  const file = path.join(process.cwd(), 'src', 'data', 'events', `${t.year}.json`)
+  writeFileSync(file, JSON.stringify(out, null, 1))
+  console.log(
+    `${t.year}: ${divisions.length} divisions, ${archers} archers, ` +
+      `${divisions.filter((d) => d.champion).length} champions -> ${file}`,
+  )
+}
+
+async function main() {
+  for (const t of TOURNAMENTS) {
+    await syncTournament(t)
+  }
+}
+
+main().catch((e) => {
+  console.error(e)
+  process.exit(1)
+})

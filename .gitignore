@@ -14,3 +14,4 @@ tsconfig.tsbuildinfo
 ruvector.db
 .claude-flow/
 .swarm/
+docs/eos-api-reference.txt
