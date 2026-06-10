@@ -27,9 +27,9 @@ function Hero() {
   return (
     <section className="hero">
       <Image
-        src="/brand/ringer-mark-white.png"
+        src="/brand/ringer-antlers-white.png"
         alt=""
-        width={220}
+        width={442}
         height={400}
         className="hero-mark"
         priority
