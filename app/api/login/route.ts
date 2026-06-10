@@ -12,6 +12,15 @@ import {
 
 export const dynamic = 'force-dynamic'
 
+/**
+ * Relative-Location redirect. Building an absolute URL from request.url
+ * breaks behind Railway's proxy (it resolves to the internal localhost
+ * address); browsers resolve a relative Location against the public origin.
+ */
+function seeOther(location: string): NextResponse {
+  return new NextResponse(null, { status: 303, headers: { Location: location } })
+}
+
 export async function POST(request: NextRequest): Promise<NextResponse> {
   const form = await request.formData()
   const password = form.get('password')
@@ -21,10 +30,10 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   const valid =
     typeof password === 'string' && expected !== '' && secret !== '' && safeEqual(password, expected)
   if (!valid) {
-    return NextResponse.redirect(new URL('/admin/login?error=1', request.url), 303)
+    return seeOther('/admin/login?error=1')
   }
 
-  const response = NextResponse.redirect(new URL('/admin', request.url), 303)
+  const response = seeOther('/admin')
   response.cookies.set(ADMIN_SESSION_COOKIE, createSessionToken(secret), {
     httpOnly: true,
     sameSite: 'lax',
