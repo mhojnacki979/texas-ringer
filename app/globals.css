@@ -966,6 +966,33 @@ a.button:hover {
   color: var(--text);
 }
 
+.match-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.match-caption {
+  font-family: var(--font-condensed);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.match-wrap:has(.is-bronze-match) .match-caption {
+  color: var(--bronze);
+}
+
+.match.is-bronze-match {
+  border-color: var(--bronze);
+}
+
+.match.is-bronze-match .match-row.is-winner .match-score {
+  color: var(--bronze);
+}
+
 .bracket-col-champion .bracket-col-matches {
   justify-content: center;
 }
@@ -1011,6 +1038,34 @@ a.button:hover {
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   color: var(--text-muted);
+}
+
+.round-block-note {
+  font-family: var(--font-condensed);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 0.7rem;
+}
+
+.vs-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.vs-caption {
+  font-family: var(--font-condensed);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.vs-wrap:nth-child(2) .vs-caption {
+  color: var(--bronze);
 }
 
 .round-block-matches {
