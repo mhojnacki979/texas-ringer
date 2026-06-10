@@ -5,8 +5,8 @@
  * page) or a raw text/csv body (future EyesonScore automation/webhooks).
  * Auth: `Authorization: Bearer <ADMIN_TOKEN>`.
  */
-import { timingSafeEqual } from 'node:crypto'
 import { NextRequest, NextResponse } from 'next/server'
+import { ADMIN_SESSION_COOKIE, safeEqual, verifySessionToken } from '@/auth/session'
 import { importScoresFromCsv } from '@/db/import-scores'
 
 export const dynamic = 'force-dynamic'
@@ -14,14 +14,15 @@ export const dynamic = 'force-dynamic'
 /** Hard cap on upload size — a season of scores is well under this. */
 const MAX_CSV_BYTES = 2 * 1024 * 1024
 
+/** Accepts either an API bearer token (automation) or an admin session cookie (browser). */
 function isAuthorized(request: NextRequest): boolean {
-  const expected = process.env.ADMIN_TOKEN
-  if (expected === undefined || expected === '') return false
+  const expected = process.env.ADMIN_TOKEN ?? ''
   const header = request.headers.get('authorization') ?? ''
   const provided = header.startsWith('Bearer ') ? header.slice(7) : ''
-  const a = Buffer.from(provided)
-  const b = Buffer.from(expected)
-  return a.length === b.length && timingSafeEqual(a, b)
+  if (expected !== '' && safeEqual(provided, expected)) return true
+
+  const session = request.cookies.get(ADMIN_SESSION_COOKIE)?.value ?? ''
+  return verifySessionToken(session, process.env.SESSION_SECRET ?? '')
 }
 
 async function readCsvBody(request: NextRequest): Promise<string | null> {

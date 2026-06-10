@@ -10,7 +10,6 @@ type UploadState =
   | { status: 'failed'; message: string }
 
 export function UploadForm() {
-  const [token, setToken] = useState('')
   const [file, setFile] = useState<File | null>(null)
   const [state, setState] = useState<UploadState>({ status: 'idle' })
 
@@ -21,11 +20,8 @@ export function UploadForm() {
     try {
       const body = new FormData()
       body.append('file', file)
-      const res = await fetch('/api/import', {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${token}` },
-        body,
-      })
+      // Auth: the httpOnly session cookie rides along automatically.
+      const res = await fetch('/api/import', { method: 'POST', body })
       const json: unknown = await res.json()
       if (!res.ok) {
         const message =
@@ -43,17 +39,6 @@ export function UploadForm() {
 
   return (
     <form className="admin-form" onSubmit={handleSubmit}>
-      <label className="form-field">
-        <span className="stat-label">Admin token</span>
-        <input
-          type="password"
-          className="text-input"
-          value={token}
-          onChange={(e) => setToken(e.target.value)}
-          required
-          autoComplete="off"
-        />
-      </label>
       <label className="form-field">
         <span className="stat-label">Scores CSV</span>
         <input

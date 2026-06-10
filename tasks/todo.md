@@ -30,6 +30,8 @@ EyesonScore into "best 3 of N" series rankings.
 - [x] 6. Public UI — series index, leaderboard (segment switcher), archer detail, branded 404
 - [x] 7. Admin path — /admin upload page + token-protected POST /api/import
        (Bearer ADMIN_TOKEN, multipart or raw text/csv — raw body is the future webhook entry)
+- [x] 7b. Admin login — /admin/login (ADMIN_PASSWORD) sets HMAC-signed httpOnly session
+       cookie (SESSION_SECRET, 7-day TTL); /admin gated; footer Admin link; logout
 - [ ] 8. Deploy — Railway (switch Prisma datasource to Postgres), series.eyesonscore.com DNS
 - [ ] 9. LATER: auto-pull / webhooks from EyesonScore behind the same import boundary
 

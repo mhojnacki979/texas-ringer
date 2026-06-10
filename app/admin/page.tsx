@@ -1,4 +1,7 @@
 import type { Metadata } from 'next'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
+import { ADMIN_SESSION_COOKIE, verifySessionToken } from '@/auth/session'
 import { UploadForm } from './upload-form'
 
 export const metadata: Metadata = {
@@ -6,10 +9,21 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-export default function AdminPage() {
+export default async function AdminPage() {
+  const jar = await cookies()
+  const session = jar.get(ADMIN_SESSION_COOKIE)?.value ?? ''
+  if (!verifySessionToken(session, process.env.SESSION_SECRET ?? '')) redirect('/admin/login')
+
   return (
     <>
-      <span className="eyebrow">Admin</span>
+      <div className="admin-topbar">
+        <span className="eyebrow">Admin</span>
+        <form method="post" action="/api/logout">
+          <button type="submit" className="button-ghost">
+            Sign out
+          </button>
+        </form>
+      </div>
       <h1 className="page-title">Import Scores</h1>
       <p className="page-subtitle">
         Upload a completed-scores CSV. Imports are idempotent — re-uploading the same file never

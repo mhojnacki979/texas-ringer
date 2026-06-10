@@ -37,9 +37,11 @@ pnpm standings examples/sample-series.csv
 
 ## Admin import
 
-Set `ADMIN_TOKEN` in `.env` (see `.env.example`). Then either:
+Configure in `.env` (see `.env.example`): `ADMIN_PASSWORD` (browser login),
+`SESSION_SECRET` (signs the session cookie), `ADMIN_TOKEN` (API access).
 
-- **Browser:** visit `/admin`, paste the token, pick a CSV, import.
+- **Browser:** visit `/admin` (linked in the site footer) → sign in with the
+  admin password → upload a CSV. Sessions last 7 days; sign out anytime.
 - **API:** `curl -X POST -H "Authorization: Bearer $ADMIN_TOKEN" -F "file=@scores.csv" <site>/api/import`
   (a raw `text/csv` body also works — this is the future webhook entry point).
 

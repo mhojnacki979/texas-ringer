@@ -41,7 +41,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </header>
         <main className="site-main">{children}</main>
         <footer className="site-footer">
-          The Texas Ringer · Powered by Eyes on Score · Best 3 of N series standings
+          The Texas Ringer · Powered by Eyes on Score · Best 3 of N series standings ·{' '}
+          <Link href="/admin" className="muted">
+            Admin
+          </Link>
         </footer>
       </body>
     </html>
