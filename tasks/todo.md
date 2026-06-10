@@ -8,7 +8,7 @@ EyesonScore into "best 3 of N" series rankings.
 - Archer identity = USA Archery number (exact match across events)
 - Segmentation = division x gender x age class
 - Visibility = public read-only (admin/series-config separate)
-- Data pipeline = scheduled pull from an EyesonScore read-only export endpoint
+- Data pipeline = MANUAL CSV IMPORT for now (auto-pull/webhooks deferred; same import boundary)
 - One round format locked per series (best-3 totals comparable)
 - Per-arrow data available -> "most 7s" tiebreaker is buildable
 
@@ -20,16 +20,15 @@ EyesonScore into "best 3 of N" series rankings.
 - Sort: best-3 total -> highest single -> 2nd -> 3rd -> most 7s -> most recent.
 
 ## Phases
-- [ ] 1. Ranking engine (TDD) — pure functions, proven against doc example (867 -> 870, Event 5 drops)
-- [ ] 2. Repo scaffold — pnpm + TS + Vitest config
-- [ ] 3. Prisma schema — Series, SeriesEvent, ImportedScore, RankingSnapshot
-- [ ] 4. Scheduled pull job — import completed scores from EyesonScore export
-- [ ] 5. Compute pipeline — engine over ImportedScore -> RankingSnapshot
+- [x] 1. Ranking engine (TDD) — pure functions, proven against doc example (867 -> 870, Event 5 drops)
+- [x] 2. Repo scaffold — pnpm + TS + Vitest config
+- [ ] 3. CSV import (TDD) — quote-aware parser + Zod row validation + group into ArcherEntry per segment
+- [ ] 4. rankSeries — split entries by segment, rank each; CLI to import a CSV and print standings
+- [ ] 5. Prisma schema — Series, SeriesEvent, ImportedScore, RankingSnapshot (persist imports + snapshots)
 - [ ] 6. Public UI — series index, leaderboard (segment switcher), archer detail
-- [ ] 7. Admin path — create series, assign events (seeded config ok to start)
+- [ ] 7. Admin path — upload CSV, create series, assign events (seeded config ok to start)
+- [ ] 8. LATER: auto-pull / webhooks from EyesonScore behind the same import boundary
 
-## External dependency
-- EyesonScore must expose a read-only export endpoint returning completed scores:
-  usa_archery_no, archer_name, division, gender, age_class, tournament_id,
-  tournament_name, event_date, round_format, total_score, arrow_values
-  (or count_of_7s + x_count), finalized_at
+## CSV format (one row per archer per event)
+series, round_format, usa_archery_no, archer_name, division, gender, age_class,
+event_id, event_name, event_date (YYYY-MM-DD), total_score, arrows (optional; e.g. "10 9 9 7")

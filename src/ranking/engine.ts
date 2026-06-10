@@ -13,7 +13,13 @@ import {
   type ArcherEntry,
   type ArcherRanking,
   type EventScore,
+  type Segment,
 } from './types.js'
+
+/** Stable, human-readable key for a segment leaderboard. */
+export function segmentKey(s: Segment): string {
+  return `${s.division} / ${s.gender} / ${s.ageClass}`
+}
 
 /** Count arrows worth exactly 7 across a set of scores (for the "most 7s" tiebreaker). */
 function countSevens(scores: EventScore[]): number {
@@ -111,4 +117,24 @@ export function rankSegment(entries: ArcherEntry[]): ArcherRanking[] {
     .sort((a, b) => b.best3Total - a.best3Total)
 
   return [...ranked, ...provisional]
+}
+
+/**
+ * Rank a whole series: bucket archer entries into their segment leaderboards
+ * (division x gender x age) and rank each independently. Keyed by segmentKey.
+ */
+export function rankSeries(entries: ArcherEntry[]): Map<string, ArcherRanking[]> {
+  const bySegment = new Map<string, ArcherEntry[]>()
+  for (const entry of entries) {
+    const key = segmentKey(entry.segment)
+    const bucket = bySegment.get(key)
+    if (bucket === undefined) bySegment.set(key, [entry])
+    else bucket.push(entry)
+  }
+
+  const result = new Map<string, ArcherRanking[]>()
+  for (const [key, segmentEntries] of bySegment) {
+    result.set(key, rankSegment(segmentEntries))
+  }
+  return result
 }
