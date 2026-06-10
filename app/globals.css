@@ -690,6 +690,22 @@ a.button:hover {
   }
 }
 
+/* ---------- Event results ---------- */
+
+.elim-round {
+  margin-top: 1.75rem;
+}
+
+.elim-round-title {
+  font-family: var(--font-condensed);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 0.6rem;
+}
+
 /* ---------- Leaderboard table ---------- */
 
 .table-wrap {

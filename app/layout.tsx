@@ -72,9 +72,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Link href="/" className="site-nav-link is-active">
                 Series
               </Link>
-              <a href="https://www.texasringer.com/copy-of-rules" className="site-nav-link">
+              <Link href="/events" className="site-nav-link">
                 Records
-              </a>
+              </Link>
               <a href="https://www.texasringer.com/blank" className="site-nav-link">
                 Rules
               </a>

@@ -1,0 +1,3427 @@
+{
+ "year": 2024,
+ "name": "2024 Texas Ringer",
+ "venue": "Texas Archery",
+ "date": "2024-09-28",
+ "archers": 125,
+ "divisions": [
+  {
+   "name": "Freestyle Compound 17U Open",
+   "qualification": [
+    {
+     "rank": 1,
+     "name": "Cash Moffett",
+     "avg": "6.65",
+     "score": 399
+    },
+    {
+     "rank": 2,
+     "name": "Levi Harkey",
+     "avg": "6.63",
+     "score": 398
+    },
+    {
+     "rank": 3,
+     "name": "Cole Ware",
+     "avg": "6.58",
+     "score": 395
+    },
+    {
+     "rank": 4,
+     "name": "Case Scott",
+     "avg": "6.57",
+     "score": 394
+    },
+    {
+     "rank": 5,
+     "name": "Connor Goehring",
+     "avg": "6.38",
+     "score": 383
+    },
+    {
+     "rank": 6,
+     "name": "Dax Algueseva",
+     "avg": "6.37",
+     "score": 382
+    },
+    {
+     "rank": 7,
+     "name": "Khloe Noelke",
+     "avg": "6.35",
+     "score": 381
+    },
+    {
+     "rank": 8,
+     "name": "Nolan Hogan",
+     "avg": "6.17",
+     "score": 370
+    },
+    {
+     "rank": 9,
+     "name": "Andrew Xie",
+     "avg": "6.17",
+     "score": 370
+    },
+    {
+     "rank": 10,
+     "name": "Adam Shackelford",
+     "avg": "6.07",
+     "score": 364
+    },
+    {
+     "rank": 11,
+     "name": "Veronica Burke",
+     "avg": "5.90",
+     "score": 354
+    },
+    {
+     "rank": 12,
+     "name": "Chase McBroom",
+     "avg": "5.85",
+     "score": 351
+    },
+    {
+     "rank": 13,
+     "name": "Jewel Blakey",
+     "avg": "5.85",
+     "score": 351
+    },
+    {
+     "rank": 14,
+     "name": "Joseph Burke",
+     "avg": "5.78",
+     "score": 347
+    },
+    {
+     "rank": 15,
+     "name": "Cody johnson",
+     "avg": "5.70",
+     "score": 342
+    },
+    {
+     "rank": 16,
+     "name": "Owen Sansing",
+     "avg": "5.45",
+     "score": 327
+    },
+    {
+     "rank": 17,
+     "name": "Jake Prince",
+     "avg": "3.97",
+     "score": 238
+    }
+   ],
+   "eliminationRounds": [
+    {
+     "round": 1,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Cash Moffett",
+       "ends": [
+        33,
+        30,
+        34
+       ],
+       "score": 97,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Levi Harkey",
+       "ends": [
+        35,
+        33,
+        33
+       ],
+       "score": 101,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Cole Ware",
+       "ends": [
+        35,
+        31,
+        34
+       ],
+       "score": 100,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Case Scott",
+       "ends": [
+        34,
+        34,
+        33
+       ],
+       "score": 101,
+       "winner": true
+      },
+      {
+       "rank": 6,
+       "name": "Dax Algueseva",
+       "ends": [
+        30,
+        30,
+        31
+       ],
+       "score": 91,
+       "winner": true
+      },
+      {
+       "rank": 7,
+       "name": "Khloe Noelke",
+       "ends": [
+        31,
+        35,
+        34
+       ],
+       "score": 100,
+       "winner": true
+      },
+      {
+       "rank": 8,
+       "name": "Nolan Hogan",
+       "ends": [
+        31,
+        33,
+        31
+       ],
+       "score": 95,
+       "winner": true
+      },
+      {
+       "rank": 10,
+       "name": "Adam Shackelford",
+       "ends": [
+        33,
+        31,
+        31
+       ],
+       "score": 95,
+       "winner": false
+      },
+      {
+       "rank": 11,
+       "name": "Veronica Burke",
+       "ends": [
+        28,
+        28,
+        28
+       ],
+       "score": 84,
+       "winner": false
+      },
+      {
+       "rank": 12,
+       "name": "Chase McBroom",
+       "ends": [
+        27,
+        30,
+        29
+       ],
+       "score": 86,
+       "winner": false
+      },
+      {
+       "rank": 13,
+       "name": "Jewel Blakey",
+       "ends": [
+        29,
+        28,
+        31
+       ],
+       "score": 88,
+       "winner": false
+      },
+      {
+       "rank": 14,
+       "name": "Joseph Burke",
+       "ends": [
+        29,
+        26,
+        26
+       ],
+       "score": 81,
+       "winner": false
+      },
+      {
+       "rank": 15,
+       "name": "Cody johnson",
+       "ends": [
+        31,
+        30,
+        30
+       ],
+       "score": 91,
+       "winner": false
+      },
+      {
+       "rank": 16,
+       "name": "Owen Sansing",
+       "ends": [
+        23,
+        28,
+        26
+       ],
+       "score": 77,
+       "winner": false
+      },
+      {
+       "rank": 18,
+       "name": "Andrew Xie",
+       "ends": [
+        33,
+        31,
+        31
+       ],
+       "score": 95,
+       "winner": false
+      },
+      {
+       "rank": 18,
+       "name": "Connor Goehring",
+       "ends": [
+        32,
+        32,
+        31
+       ],
+       "score": 95,
+       "winner": true
+      }
+     ]
+    },
+    {
+     "round": 2,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Cash Moffett",
+       "ends": [
+        34,
+        33,
+        33
+       ],
+       "score": 100,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Levi Harkey",
+       "ends": [
+        32,
+        33,
+        34
+       ],
+       "score": 99,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Cole Ware",
+       "ends": [
+        33,
+        33,
+        33
+       ],
+       "score": 99,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Case Scott",
+       "ends": [
+        30,
+        33,
+        32
+       ],
+       "score": 95,
+       "winner": true
+      },
+      {
+       "rank": 6,
+       "name": "Dax Algueseva",
+       "ends": [
+        34,
+        30,
+        32
+       ],
+       "score": 96,
+       "winner": false
+      },
+      {
+       "rank": 7,
+       "name": "Khloe Noelke",
+       "ends": [
+        31,
+        32,
+        31
+       ],
+       "score": 94,
+       "winner": false
+      },
+      {
+       "rank": 8,
+       "name": "Nolan Hogan",
+       "ends": [
+        32,
+        27,
+        26
+       ],
+       "score": 85,
+       "winner": false
+      },
+      {
+       "rank": 18,
+       "name": "Connor Goehring",
+       "ends": [
+        32,
+        33,
+        29
+       ],
+       "score": 94,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 3,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Cash Moffett",
+       "ends": [
+        33,
+        30,
+        32
+       ],
+       "score": 95,
+       "winner": false
+      },
+      {
+       "rank": 2,
+       "name": "Levi Harkey",
+       "ends": [
+        32,
+        34,
+        33
+       ],
+       "score": 99,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Cole Ware",
+       "ends": [
+        31,
+        29,
+        33
+       ],
+       "score": 93,
+       "winner": false
+      },
+      {
+       "rank": 4,
+       "name": "Case Scott",
+       "ends": [
+        33,
+        31,
+        33
+       ],
+       "score": 97,
+       "winner": true
+      }
+     ]
+    },
+    {
+     "round": 4,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Cash Moffett",
+       "ends": [
+        30,
+        30,
+        31
+       ],
+       "score": 91,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Levi Harkey",
+       "ends": [
+        35,
+        34,
+        35
+       ],
+       "score": 104,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Cole Ware",
+       "ends": [
+        29,
+        30,
+        31
+       ],
+       "score": 90,
+       "winner": false
+      },
+      {
+       "rank": 4,
+       "name": "Case Scott",
+       "ends": [
+        32,
+        29,
+        31
+       ],
+       "score": 92,
+       "winner": false
+      }
+     ]
+    }
+   ],
+   "champion": "Cash Moffett"
+  },
+  {
+   "name": "Freestyle Compound Adult Open",
+   "qualification": [
+    {
+     "rank": 1,
+     "name": "Ryan Booth",
+     "avg": "6.83",
+     "score": 410
+    },
+    {
+     "rank": 2,
+     "name": "Colton Converse",
+     "avg": "6.82",
+     "score": 409
+    },
+    {
+     "rank": 3,
+     "name": "Ellensohn Chris",
+     "avg": "6.80",
+     "score": 408
+    },
+    {
+     "rank": 4,
+     "name": "Brannan Woelfel",
+     "avg": "6.58",
+     "score": 395
+    },
+    {
+     "rank": 5,
+     "name": "Ray Veuleman",
+     "avg": "6.57",
+     "score": 394
+    },
+    {
+     "rank": 6,
+     "name": "Bryan Padgett",
+     "avg": "6.52",
+     "score": 391
+    },
+    {
+     "rank": 7,
+     "name": "Carson Krahe",
+     "avg": "6.45",
+     "score": 387
+    },
+    {
+     "rank": 8,
+     "name": "Aaron Ochoa",
+     "avg": "6.43",
+     "score": 386
+    },
+    {
+     "rank": 9,
+     "name": "Josh Carter",
+     "avg": "6.42",
+     "score": 385
+    },
+    {
+     "rank": 10,
+     "name": "Colby Scott",
+     "avg": "6.35",
+     "score": 381
+    },
+    {
+     "rank": 11,
+     "name": "Steve Holbert",
+     "avg": "6.30",
+     "score": 378
+    },
+    {
+     "rank": 12,
+     "name": "Kat Stiegel",
+     "avg": "6.28",
+     "score": 377
+    },
+    {
+     "rank": 13,
+     "name": "Chaney Elliott",
+     "avg": "6.22",
+     "score": 373
+    },
+    {
+     "rank": 14,
+     "name": "Randall Chesnutt",
+     "avg": "5.97",
+     "score": 358
+    },
+    {
+     "rank": 15,
+     "name": "Jason Whiddon",
+     "avg": "5.93",
+     "score": 356
+    },
+    {
+     "rank": 16,
+     "name": "BIlly Barber",
+     "avg": "5.15",
+     "score": 309
+    }
+   ],
+   "eliminationRounds": [
+    {
+     "round": 1,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Ryan Booth",
+       "ends": [
+        33,
+        35,
+        35
+       ],
+       "score": 103,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Colton Converse",
+       "ends": [
+        34,
+        33,
+        34
+       ],
+       "score": 101,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Ellensohn Chris",
+       "ends": [
+        35,
+        35,
+        35
+       ],
+       "score": 105,
+       "winner": false
+      },
+      {
+       "rank": 4,
+       "name": "Brannan Woelfel",
+       "ends": [
+        31,
+        34,
+        32
+       ],
+       "score": 97,
+       "winner": true
+      },
+      {
+       "rank": 5,
+       "name": "Ray Veuleman",
+       "ends": [
+        31,
+        33,
+        29
+       ],
+       "score": 93,
+       "winner": true
+      },
+      {
+       "rank": 6,
+       "name": "Bryan Padgett",
+       "ends": [
+        31,
+        29,
+        34
+       ],
+       "score": 94,
+       "winner": true
+      },
+      {
+       "rank": 7,
+       "name": "Carson Krahe",
+       "ends": [
+        35,
+        35,
+        28
+       ],
+       "score": 98,
+       "winner": true
+      },
+      {
+       "rank": 8,
+       "name": "Aaron Ochoa",
+       "ends": [
+        28,
+        31,
+        32
+       ],
+       "score": 91,
+       "winner": false
+      },
+      {
+       "rank": 9,
+       "name": "Josh Carter",
+       "ends": [
+        31,
+        30,
+        31
+       ],
+       "score": 92,
+       "winner": true
+      },
+      {
+       "rank": 10,
+       "name": "Colby Scott",
+       "ends": [
+        32,
+        27,
+        34
+       ],
+       "score": 93,
+       "winner": false
+      },
+      {
+       "rank": 11,
+       "name": "Steve Holbert",
+       "ends": [
+        29,
+        33,
+        32
+       ],
+       "score": 94,
+       "winner": false
+      },
+      {
+       "rank": 12,
+       "name": "Kat Stiegel",
+       "ends": [
+        25,
+        29,
+        34
+       ],
+       "score": 88,
+       "winner": false
+      },
+      {
+       "rank": 13,
+       "name": "Chaney Elliott",
+       "ends": [
+        29,
+        28,
+        33
+       ],
+       "score": 90,
+       "winner": false
+      },
+      {
+       "rank": 14,
+       "name": "Randall Chesnutt",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": false
+      },
+      {
+       "rank": 15,
+       "name": "Jason Whiddon",
+       "ends": [
+        31,
+        29,
+        29
+       ],
+       "score": 89,
+       "winner": false
+      },
+      {
+       "rank": 16,
+       "name": "BIlly Barber",
+       "ends": [
+        31,
+        0,
+        0
+       ],
+       "score": 31,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 2,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Ryan Booth",
+       "ends": [
+        34,
+        33,
+        33
+       ],
+       "score": 100,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Colton Converse",
+       "ends": [
+        34,
+        32,
+        32
+       ],
+       "score": 98,
+       "winner": false
+      },
+      {
+       "rank": 3,
+       "name": "Ellensohn Chris",
+       "ends": [
+        34,
+        34,
+        35
+       ],
+       "score": 103,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Brannan Woelfel",
+       "ends": [
+        30,
+        34,
+        31
+       ],
+       "score": 95,
+       "winner": false
+      },
+      {
+       "rank": 5,
+       "name": "Ray Veuleman",
+       "ends": [
+        33,
+        32,
+        32
+       ],
+       "score": 97,
+       "winner": true
+      },
+      {
+       "rank": 6,
+       "name": "Bryan Padgett",
+       "ends": [
+        32,
+        32,
+        35
+       ],
+       "score": 99,
+       "winner": false
+      },
+      {
+       "rank": 7,
+       "name": "Carson Krahe",
+       "ends": [
+        34,
+        33,
+        35
+       ],
+       "score": 102,
+       "winner": true
+      },
+      {
+       "rank": 9,
+       "name": "Josh Carter",
+       "ends": [
+        29,
+        33,
+        33
+       ],
+       "score": 95,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 3,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Ryan Booth",
+       "ends": [
+        33,
+        32,
+        35
+       ],
+       "score": 100,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Ellensohn Chris",
+       "ends": [
+        33,
+        34,
+        34
+       ],
+       "score": 101,
+       "winner": false
+      },
+      {
+       "rank": 5,
+       "name": "Ray Veuleman",
+       "ends": [
+        31,
+        34,
+        33
+       ],
+       "score": 98,
+       "winner": false
+      },
+      {
+       "rank": 7,
+       "name": "Carson Krahe",
+       "ends": [
+        34,
+        33,
+        35
+       ],
+       "score": 102,
+       "winner": true
+      }
+     ]
+    },
+    {
+     "round": 4,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Ryan Booth",
+       "ends": [
+        33,
+        26,
+        33
+       ],
+       "score": 92,
+       "winner": false
+      },
+      {
+       "rank": 3,
+       "name": "Ellensohn Chris",
+       "ends": [
+        34,
+        35,
+        33
+       ],
+       "score": 102,
+       "winner": true
+      },
+      {
+       "rank": 5,
+       "name": "Ray Veuleman",
+       "ends": [
+        34,
+        32,
+        33
+       ],
+       "score": 99,
+       "winner": false
+      },
+      {
+       "rank": 7,
+       "name": "Carson Krahe",
+       "ends": [
+        34,
+        35,
+        34
+       ],
+       "score": 103,
+       "winner": true
+      }
+     ]
+    }
+   ],
+   "champion": "Ellensohn Chris"
+  },
+  {
+   "name": "Freestyle Compound 13U Open",
+   "qualification": [
+    {
+     "rank": 1,
+     "name": "Nash Thompson",
+     "avg": "5.78",
+     "score": 347
+    },
+    {
+     "rank": 2,
+     "name": "Gianna Burke",
+     "avg": "5.48",
+     "score": 329
+    },
+    {
+     "rank": 3,
+     "name": "Jacob Goff",
+     "avg": "5.33",
+     "score": 320
+    }
+   ],
+   "eliminationRounds": [
+    {
+     "round": 3,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Nash Thompson",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Gianna Burke",
+       "ends": [
+        21,
+        25,
+        28
+       ],
+       "score": 74,
+       "winner": false
+      },
+      {
+       "rank": 3,
+       "name": "Jacob Goff",
+       "ends": [
+        20,
+        27,
+        28
+       ],
+       "score": 75,
+       "winner": true
+      }
+     ]
+    },
+    {
+     "round": 4,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Nash Thompson",
+       "ends": [
+        27,
+        33,
+        32
+       ],
+       "score": 92,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Gianna Burke",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Jacob Goff",
+       "ends": [
+        27,
+        29,
+        27
+       ],
+       "score": 83,
+       "winner": false
+      }
+     ]
+    }
+   ],
+   "champion": "Nash Thompson"
+  },
+  {
+   "name": "Barebow Adult Open",
+   "qualification": [
+    {
+     "rank": 1,
+     "name": "Cheyenne McBride",
+     "avg": "5.30",
+     "score": 318
+    },
+    {
+     "rank": 2,
+     "name": "john winker",
+     "avg": "5.25",
+     "score": 315
+    },
+    {
+     "rank": 3,
+     "name": "Nicholas Way",
+     "avg": "5.25",
+     "score": 315
+    },
+    {
+     "rank": 4,
+     "name": "Spanky Brooks",
+     "avg": "5.23",
+     "score": 314
+    },
+    {
+     "rank": 5,
+     "name": "Justin Sperlazza",
+     "avg": "5.03",
+     "score": 302
+    },
+    {
+     "rank": 6,
+     "name": "Marcel Laurens",
+     "avg": "4.95",
+     "score": 297
+    },
+    {
+     "rank": 7,
+     "name": "Lee Wilkins",
+     "avg": "4.92",
+     "score": 295
+    },
+    {
+     "rank": 8,
+     "name": "Johana Czako",
+     "avg": "4.87",
+     "score": 292
+    },
+    {
+     "rank": 9,
+     "name": "Rick Stonebraker",
+     "avg": "4.83",
+     "score": 290
+    },
+    {
+     "rank": 10,
+     "name": "Jason Rojas",
+     "avg": "4.77",
+     "score": 286
+    },
+    {
+     "rank": 11,
+     "name": "Sanjeh Lok",
+     "avg": "4.75",
+     "score": 285
+    },
+    {
+     "rank": 12,
+     "name": "Darren Morse",
+     "avg": "4.72",
+     "score": 283
+    },
+    {
+     "rank": 13,
+     "name": "Richard Hall",
+     "avg": "4.62",
+     "score": 277
+    },
+    {
+     "rank": 14,
+     "name": "David Day",
+     "avg": "4.52",
+     "score": 271
+    },
+    {
+     "rank": 14,
+     "name": "Sarah Kate [SK] Jentsch",
+     "avg": "4.52",
+     "score": 271
+    },
+    {
+     "rank": 16,
+     "name": "Tom Ramsbacher",
+     "avg": "4.45",
+     "score": 267
+    },
+    {
+     "rank": 17,
+     "name": "Dave Nesbitt",
+     "avg": "4.40",
+     "score": 264
+    },
+    {
+     "rank": 18,
+     "name": "Sherrill Andrea",
+     "avg": "4.35",
+     "score": 261
+    },
+    {
+     "rank": 19,
+     "name": "Sabrina Harrigan",
+     "avg": "4.33",
+     "score": 260
+    },
+    {
+     "rank": 20,
+     "name": "Kayla Kalnasy",
+     "avg": "4.32",
+     "score": 259
+    },
+    {
+     "rank": 21,
+     "name": "Adrian Lama",
+     "avg": "4.20",
+     "score": 252
+    },
+    {
+     "rank": 22,
+     "name": "Billy Koch",
+     "avg": "4.13",
+     "score": 248
+    },
+    {
+     "rank": 23,
+     "name": "Jay Bennett",
+     "avg": "4.13",
+     "score": 248
+    },
+    {
+     "rank": 24,
+     "name": "Jamie Parker",
+     "avg": "4.05",
+     "score": 243
+    },
+    {
+     "rank": 25,
+     "name": "Mollie McDonald",
+     "avg": "4.00",
+     "score": 240
+    },
+    {
+     "rank": 26,
+     "name": "Apurv Singh Gautam",
+     "avg": "3.72",
+     "score": 223
+    }
+   ],
+   "eliminationRounds": [
+    {
+     "round": 1,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Cheyenne McBride",
+       "ends": [
+        20,
+        24,
+        22
+       ],
+       "score": 66,
+       "winner": false
+      },
+      {
+       "rank": 2,
+       "name": "john winker",
+       "ends": [
+        22,
+        24,
+        24
+       ],
+       "score": 70,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Nicholas Way",
+       "ends": [
+        25,
+        28,
+        24
+       ],
+       "score": 77,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Spanky Brooks",
+       "ends": [
+        26,
+        26,
+        25
+       ],
+       "score": 77,
+       "winner": true
+      },
+      {
+       "rank": 5,
+       "name": "Justin Sperlazza",
+       "ends": [
+        30,
+        30,
+        24
+       ],
+       "score": 84,
+       "winner": true
+      },
+      {
+       "rank": 6,
+       "name": "Marcel Laurens",
+       "ends": [
+        20,
+        26,
+        26
+       ],
+       "score": 72,
+       "winner": false
+      },
+      {
+       "rank": 7,
+       "name": "Lee Wilkins",
+       "ends": [
+        24,
+        29,
+        29
+       ],
+       "score": 82,
+       "winner": true
+      },
+      {
+       "rank": 8,
+       "name": "Johana Czako",
+       "ends": [
+        22,
+        24,
+        22
+       ],
+       "score": 68,
+       "winner": true
+      },
+      {
+       "rank": 9,
+       "name": "Rick Stonebraker",
+       "ends": [
+        20,
+        22,
+        5
+       ],
+       "score": 47,
+       "winner": false
+      },
+      {
+       "rank": 10,
+       "name": "Jason Rojas",
+       "ends": [
+        22,
+        19,
+        22
+       ],
+       "score": 63,
+       "winner": false
+      },
+      {
+       "rank": 11,
+       "name": "Sanjeh Lok",
+       "ends": [
+        24,
+        25,
+        24
+       ],
+       "score": 73,
+       "winner": true
+      },
+      {
+       "rank": 12,
+       "name": "Darren Morse",
+       "ends": [
+        19,
+        26,
+        22
+       ],
+       "score": 67,
+       "winner": false
+      },
+      {
+       "rank": 13,
+       "name": "Richard Hall",
+       "ends": [
+        27,
+        21,
+        20
+       ],
+       "score": 68,
+       "winner": false
+      },
+      {
+       "rank": 14,
+       "name": "David Day",
+       "ends": [
+        20,
+        22,
+        23
+       ],
+       "score": 65,
+       "winner": false
+      },
+      {
+       "rank": 14,
+       "name": "Sarah Kate [SK] Jentsch",
+       "ends": [
+        24,
+        22,
+        22
+       ],
+       "score": 68,
+       "winner": false
+      },
+      {
+       "rank": 16,
+       "name": "Tom Ramsbacher",
+       "ends": [
+        19,
+        28,
+        20
+       ],
+       "score": 67,
+       "winner": true
+      }
+     ]
+    },
+    {
+     "round": 2,
+     "results": [
+      {
+       "rank": 2,
+       "name": "john winker",
+       "ends": [
+        27,
+        24,
+        23
+       ],
+       "score": 74,
+       "winner": false
+      },
+      {
+       "rank": 3,
+       "name": "Nicholas Way",
+       "ends": [
+        27,
+        26,
+        25
+       ],
+       "score": 78,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Spanky Brooks",
+       "ends": [
+        25,
+        25,
+        27
+       ],
+       "score": 77,
+       "winner": true
+      },
+      {
+       "rank": 5,
+       "name": "Justin Sperlazza",
+       "ends": [
+        26,
+        26,
+        23
+       ],
+       "score": 75,
+       "winner": false
+      },
+      {
+       "rank": 7,
+       "name": "Lee Wilkins",
+       "ends": [
+        27,
+        28,
+        23
+       ],
+       "score": 78,
+       "winner": true
+      },
+      {
+       "rank": 8,
+       "name": "Johana Czako",
+       "ends": [
+        24,
+        24,
+        23
+       ],
+       "score": 71,
+       "winner": true
+      },
+      {
+       "rank": 11,
+       "name": "Sanjeh Lok",
+       "ends": [
+        19,
+        22,
+        22
+       ],
+       "score": 63,
+       "winner": false
+      },
+      {
+       "rank": 16,
+       "name": "Tom Ramsbacher",
+       "ends": [
+        21,
+        20,
+        23
+       ],
+       "score": 64,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 3,
+     "results": [
+      {
+       "rank": 3,
+       "name": "Nicholas Way",
+       "ends": [
+        28,
+        27,
+        26
+       ],
+       "score": 81,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Spanky Brooks",
+       "ends": [
+        23,
+        26,
+        25
+       ],
+       "score": 74,
+       "winner": true
+      },
+      {
+       "rank": 7,
+       "name": "Lee Wilkins",
+       "ends": [
+        24,
+        27,
+        24
+       ],
+       "score": 75,
+       "winner": false
+      },
+      {
+       "rank": 8,
+       "name": "Johana Czako",
+       "ends": [
+        22,
+        21,
+        24
+       ],
+       "score": 67,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 4,
+     "results": [
+      {
+       "rank": 3,
+       "name": "Nicholas Way",
+       "ends": [
+        28,
+        24,
+        27
+       ],
+       "score": 79,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Spanky Brooks",
+       "ends": [
+        24,
+        29,
+        25
+       ],
+       "score": 78,
+       "winner": false
+      },
+      {
+       "rank": 7,
+       "name": "Lee Wilkins",
+       "ends": [
+        20,
+        26,
+        26
+       ],
+       "score": 72,
+       "winner": true
+      },
+      {
+       "rank": 8,
+       "name": "Johana Czako",
+       "ends": [
+        22,
+        21,
+        23
+       ],
+       "score": 66,
+       "winner": false
+      }
+     ]
+    }
+   ],
+   "champion": "Nicholas Way"
+  },
+  {
+   "name": "Barebow 17U Open",
+   "qualification": [
+    {
+     "rank": 1,
+     "name": "Charli Long",
+     "avg": "4.45",
+     "score": 267
+    },
+    {
+     "rank": 2,
+     "name": "Shamus McCann",
+     "avg": "3.27",
+     "score": 196
+    },
+    {
+     "rank": 3,
+     "name": "Jacquilyn Fenwick",
+     "avg": "3.07",
+     "score": 184
+    },
+    {
+     "rank": 4,
+     "name": "Jackson Campbell",
+     "avg": "2.93",
+     "score": 176
+    },
+    {
+     "rank": 5,
+     "name": "Levi Whitaker",
+     "avg": "2.57",
+     "score": 154
+    }
+   ],
+   "eliminationRounds": [
+    {
+     "round": 2,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Charli Long",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Shamus McCann",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Jacquilyn Fenwick",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Jackson Campbell",
+       "ends": [
+        16,
+        19,
+        17
+       ],
+       "score": 52,
+       "winner": true
+      },
+      {
+       "rank": 5,
+       "name": "Levi Whitaker",
+       "ends": [
+        10,
+        13,
+        12
+       ],
+       "score": 35,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 3,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Charli Long",
+       "ends": [
+        20,
+        26,
+        21
+       ],
+       "score": 67,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Shamus McCann",
+       "ends": [
+        16,
+        16,
+        16
+       ],
+       "score": 48,
+       "winner": false
+      },
+      {
+       "rank": 3,
+       "name": "Jacquilyn Fenwick",
+       "ends": [
+        16,
+        18,
+        14
+       ],
+       "score": 48,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Jackson Campbell",
+       "ends": [
+        7,
+        21,
+        20
+       ],
+       "score": 48,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 4,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Charli Long",
+       "ends": [
+        21,
+        20,
+        21
+       ],
+       "score": 62,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Shamus McCann",
+       "ends": [
+        18,
+        10,
+        24
+       ],
+       "score": 52,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Jacquilyn Fenwick",
+       "ends": [
+        7,
+        9,
+        15
+       ],
+       "score": 31,
+       "winner": false
+      },
+      {
+       "rank": 4,
+       "name": "Jackson Campbell",
+       "ends": [
+        17,
+        13,
+        13
+       ],
+       "score": 43,
+       "winner": false
+      }
+     ]
+    }
+   ],
+   "champion": "Charli Long"
+  },
+  {
+   "name": "Barebow 13U Open",
+   "qualification": [
+    {
+     "rank": 1,
+     "name": "Dean Rosas",
+     "avg": "4.43",
+     "score": 266
+    },
+    {
+     "rank": 2,
+     "name": "Harishankar Pitchiah",
+     "avg": "3.28",
+     "score": 197
+    },
+    {
+     "rank": 3,
+     "name": "Landry Blakey",
+     "avg": "2.27",
+     "score": 68
+    }
+   ],
+   "eliminationRounds": [
+    {
+     "round": 3,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Dean Rosas",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Harishankar Pitchiah",
+       "ends": [
+        14,
+        15,
+        17
+       ],
+       "score": 46,
+       "winner": false
+      },
+      {
+       "rank": 3,
+       "name": "Landry Blakey",
+       "ends": [
+        20,
+        18,
+        19
+       ],
+       "score": 57,
+       "winner": true
+      }
+     ]
+    },
+    {
+     "round": 4,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Dean Rosas",
+       "ends": [
+        21,
+        21,
+        23
+       ],
+       "score": 65,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Harishankar Pitchiah",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Landry Blakey",
+       "ends": [
+        12,
+        16,
+        20
+       ],
+       "score": 48,
+       "winner": false
+      }
+     ]
+    }
+   ],
+   "champion": "Dean Rosas"
+  },
+  {
+   "name": "Recurve 13U Open",
+   "qualification": [
+    {
+     "rank": 1,
+     "name": "Micah Xie",
+     "avg": "5.42",
+     "score": 325
+    },
+    {
+     "rank": 2,
+     "name": "Ellie Booth",
+     "avg": "5.03",
+     "score": 302
+    },
+    {
+     "rank": 3,
+     "name": "Isaak Atkins",
+     "avg": "4.98",
+     "score": 299
+    },
+    {
+     "rank": 4,
+     "name": "Alain Pinto",
+     "avg": "4.97",
+     "score": 298
+    },
+    {
+     "rank": 5,
+     "name": "Elyse Chan",
+     "avg": "4.65",
+     "score": 279
+    },
+    {
+     "rank": 6,
+     "name": "Zayden Boone",
+     "avg": "4.57",
+     "score": 274
+    },
+    {
+     "rank": 7,
+     "name": "Nicole Simon",
+     "avg": "4.33",
+     "score": 260
+    },
+    {
+     "rank": 8,
+     "name": "Nathaniel Murray",
+     "avg": "3.78",
+     "score": 227
+    },
+    {
+     "rank": 9,
+     "name": "Eli Kim",
+     "avg": "3.60",
+     "score": 216
+    }
+   ],
+   "eliminationRounds": [
+    {
+     "round": 1,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Micah Xie",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Ellie Booth",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Isaak Atkins",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Alain Pinto",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 5,
+       "name": "Elyse Chan",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 6,
+       "name": "Zayden Boone",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 7,
+       "name": "Nicole Simon",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 8,
+       "name": "Nathaniel Murray",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": false
+      },
+      {
+       "rank": 9,
+       "name": "Eli Kim",
+       "ends": [
+        1,
+        0,
+        0
+       ],
+       "score": 1,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 2,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Micah Xie",
+       "ends": [
+        27,
+        22,
+        27
+       ],
+       "score": 76,
+       "winner": false
+      },
+      {
+       "rank": 2,
+       "name": "Ellie Booth",
+       "ends": [
+        26,
+        25,
+        21
+       ],
+       "score": 72,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Isaak Atkins",
+       "ends": [
+        27,
+        27,
+        28
+       ],
+       "score": 82,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Alain Pinto",
+       "ends": [
+        19,
+        24,
+        22
+       ],
+       "score": 65,
+       "winner": false
+      },
+      {
+       "rank": 5,
+       "name": "Elyse Chan",
+       "ends": [
+        24,
+        22,
+        23
+       ],
+       "score": 69,
+       "winner": true
+      },
+      {
+       "rank": 6,
+       "name": "Zayden Boone",
+       "ends": [
+        22,
+        19,
+        21
+       ],
+       "score": 62,
+       "winner": false
+      },
+      {
+       "rank": 7,
+       "name": "Nicole Simon",
+       "ends": [
+        22,
+        21,
+        23
+       ],
+       "score": 66,
+       "winner": false
+      },
+      {
+       "rank": 9,
+       "name": "Eli Kim",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 3,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Micah Xie",
+       "ends": [
+        28,
+        23,
+        26
+       ],
+       "score": 77,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Ellie Booth",
+       "ends": [
+        22,
+        27,
+        26
+       ],
+       "score": 75,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Isaak Atkins",
+       "ends": [
+        22,
+        23,
+        23
+       ],
+       "score": 68,
+       "winner": false
+      },
+      {
+       "rank": 5,
+       "name": "Elyse Chan",
+       "ends": [
+        23,
+        20,
+        21
+       ],
+       "score": 64,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 4,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Micah Xie",
+       "ends": [
+        26,
+        21,
+        23
+       ],
+       "score": 70,
+       "winner": false
+      },
+      {
+       "rank": 2,
+       "name": "Ellie Booth",
+       "ends": [
+        24,
+        24,
+        27
+       ],
+       "score": 75,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Isaak Atkins",
+       "ends": [
+        25,
+        30,
+        25
+       ],
+       "score": 80,
+       "winner": true
+      },
+      {
+       "rank": 5,
+       "name": "Elyse Chan",
+       "ends": [
+        19,
+        25,
+        20
+       ],
+       "score": 64,
+       "winner": false
+      }
+     ]
+    }
+   ],
+   "champion": "Ellie Booth"
+  },
+  {
+   "name": "Recurve Adult Open",
+   "qualification": [
+    {
+     "rank": 1,
+     "name": "Caelan Shanklin",
+     "avg": "6.22",
+     "score": 373
+    },
+    {
+     "rank": 2,
+     "name": "Venugopal Kunnavakkam",
+     "avg": "6.15",
+     "score": 369
+    },
+    {
+     "rank": 3,
+     "name": "Matthew Requa",
+     "avg": "6.02",
+     "score": 361
+    },
+    {
+     "rank": 4,
+     "name": "Whitney Vandiver",
+     "avg": "5.20",
+     "score": 312
+    },
+    {
+     "rank": 5,
+     "name": "tri ngo",
+     "avg": "4.63",
+     "score": 278
+    },
+    {
+     "rank": 6,
+     "name": "Haydee Diaz",
+     "avg": "4.33",
+     "score": 260
+    }
+   ],
+   "eliminationRounds": [
+    {
+     "round": 2,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Caelan Shanklin",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Venugopal Kunnavakkam",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Matthew Requa",
+       "ends": [
+        30,
+        28,
+        28
+       ],
+       "score": 86,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Whitney Vandiver",
+       "ends": [
+        22,
+        25,
+        22
+       ],
+       "score": 69,
+       "winner": false
+      },
+      {
+       "rank": 5,
+       "name": "tri ngo",
+       "ends": [
+        24,
+        23,
+        24
+       ],
+       "score": 71,
+       "winner": true
+      },
+      {
+       "rank": 6,
+       "name": "Haydee Diaz",
+       "ends": [
+        23,
+        22,
+        23
+       ],
+       "score": 68,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 3,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Caelan Shanklin",
+       "ends": [
+        34,
+        34,
+        34
+       ],
+       "score": 102,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Venugopal Kunnavakkam",
+       "ends": [
+        29,
+        30,
+        34
+       ],
+       "score": 93,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Matthew Requa",
+       "ends": [
+        32,
+        28,
+        25
+       ],
+       "score": 85,
+       "winner": false
+      },
+      {
+       "rank": 5,
+       "name": "tri ngo",
+       "ends": [
+        26,
+        25,
+        23
+       ],
+       "score": 74,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 4,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Caelan Shanklin",
+       "ends": [
+        26,
+        33,
+        31
+       ],
+       "score": 90,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Venugopal Kunnavakkam",
+       "ends": [
+        28,
+        31,
+        24
+       ],
+       "score": 83,
+       "winner": false
+      },
+      {
+       "rank": 3,
+       "name": "Matthew Requa",
+       "ends": [
+        33,
+        30,
+        30
+       ],
+       "score": 93,
+       "winner": true
+      },
+      {
+       "rank": 5,
+       "name": "tri ngo",
+       "ends": [
+        23,
+        25,
+        29
+       ],
+       "score": 77,
+       "winner": false
+      }
+     ]
+    }
+   ],
+   "champion": "Caelan Shanklin"
+  },
+  {
+   "name": "Recurve 17U Open",
+   "qualification": [
+    {
+     "rank": 1,
+     "name": "Ethan Chan",
+     "avg": "6.00",
+     "score": 360
+    },
+    {
+     "rank": 2,
+     "name": "Daniel Kim",
+     "avg": "5.53",
+     "score": 332
+    },
+    {
+     "rank": 3,
+     "name": "Nivriti Arya",
+     "avg": "5.15",
+     "score": 309
+    },
+    {
+     "rank": 4,
+     "name": "Shailesh Satewar",
+     "avg": "4.90",
+     "score": 294
+    },
+    {
+     "rank": 5,
+     "name": "Kenya Boone",
+     "avg": "4.43",
+     "score": 266
+    }
+   ],
+   "eliminationRounds": [
+    {
+     "round": 2,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Ethan Chan",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Daniel Kim",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Nivriti Arya",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Shailesh Satewar",
+       "ends": [
+        25,
+        26,
+        25
+       ],
+       "score": 76,
+       "winner": true
+      },
+      {
+       "rank": 5,
+       "name": "Kenya Boone",
+       "ends": [
+        23,
+        26,
+        24
+       ],
+       "score": 73,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 3,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Ethan Chan",
+       "ends": [
+        31,
+        28,
+        29
+       ],
+       "score": 88,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Daniel Kim",
+       "ends": [
+        24,
+        26,
+        25
+       ],
+       "score": 75,
+       "winner": false
+      },
+      {
+       "rank": 3,
+       "name": "Nivriti Arya",
+       "ends": [
+        28,
+        24,
+        25
+       ],
+       "score": 77,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Shailesh Satewar",
+       "ends": [
+        21,
+        26,
+        25
+       ],
+       "score": 72,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 4,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Ethan Chan",
+       "ends": [
+        28,
+        27,
+        33
+       ],
+       "score": 88,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Daniel Kim",
+       "ends": [
+        1,
+        0,
+        0
+       ],
+       "score": 1,
+       "winner": false
+      },
+      {
+       "rank": 3,
+       "name": "Nivriti Arya",
+       "ends": [
+        23,
+        28,
+        25
+       ],
+       "score": 76,
+       "winner": false
+      },
+      {
+       "rank": 4,
+       "name": "Shailesh Satewar",
+       "ends": [
+        1,
+        0,
+        0
+       ],
+       "score": 1,
+       "winner": true
+      }
+     ]
+    }
+   ],
+   "champion": "Ethan Chan"
+  },
+  {
+   "name": "Bowhunter 17U Open",
+   "qualification": [
+    {
+     "rank": 1,
+     "name": "Chase Manor",
+     "avg": "5.63",
+     "score": 338
+    },
+    {
+     "rank": 2,
+     "name": "Trustin Nelson",
+     "avg": "5.47",
+     "score": 328
+    },
+    {
+     "rank": 3,
+     "name": "Joel Bonner",
+     "avg": "5.15",
+     "score": 309
+    }
+   ],
+   "eliminationRounds": [
+    {
+     "round": 3,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Chase Manor",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Trustin Nelson",
+       "ends": [
+        23,
+        28,
+        23
+       ],
+       "score": 74,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Joel Bonner",
+       "ends": [
+        17,
+        21,
+        29
+       ],
+       "score": 67,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 4,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Chase Manor",
+       "ends": [
+        30,
+        26,
+        25
+       ],
+       "score": 81,
+       "winner": false
+      },
+      {
+       "rank": 2,
+       "name": "Trustin Nelson",
+       "ends": [
+        29,
+        27,
+        26
+       ],
+       "score": 82,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Joel Bonner",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      }
+     ]
+    }
+   ],
+   "champion": "Trustin Nelson"
+  },
+  {
+   "name": "Bowhunter 13U Open",
+   "qualification": [
+    {
+     "rank": 1,
+     "name": "Addie Andrepont",
+     "avg": "4.98",
+     "score": 299
+    },
+    {
+     "rank": 2,
+     "name": "Riley Berger",
+     "avg": "4.80",
+     "score": 288
+    },
+    {
+     "rank": 3,
+     "name": "Emma Andrepont",
+     "avg": "3.85",
+     "score": 231
+    }
+   ],
+   "eliminationRounds": [
+    {
+     "round": 3,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Addie Andrepont",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Riley Berger",
+       "ends": [
+        19,
+        20,
+        26
+       ],
+       "score": 65,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Emma Andrepont",
+       "ends": [
+        22,
+        18,
+        25
+       ],
+       "score": 65,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 4,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Addie Andrepont",
+       "ends": [
+        27,
+        26,
+        27
+       ],
+       "score": 80,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Riley Berger",
+       "ends": [
+        24,
+        28,
+        24
+       ],
+       "score": 76,
+       "winner": false
+      },
+      {
+       "rank": 3,
+       "name": "Emma Andrepont",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": true
+      }
+     ]
+    }
+   ],
+   "champion": "Addie Andrepont"
+  },
+  {
+   "name": "TRAD Adult Open",
+   "qualification": [
+    {
+     "rank": 1,
+     "name": "Clifton Montgomery",
+     "avg": "4.57",
+     "score": 274
+    },
+    {
+     "rank": 2,
+     "name": "Robert Garcia",
+     "avg": "4.50",
+     "score": 270
+    },
+    {
+     "rank": 3,
+     "name": "Stacey Carmichael",
+     "avg": "4.50",
+     "score": 270
+    },
+    {
+     "rank": 4,
+     "name": "Matthew Epp",
+     "avg": "4.48",
+     "score": 269
+    },
+    {
+     "rank": 5,
+     "name": "Robby Rodriguez Jr.",
+     "avg": "4.43",
+     "score": 266
+    },
+    {
+     "rank": 6,
+     "name": "Suzi Swanson",
+     "avg": "4.20",
+     "score": 252
+    },
+    {
+     "rank": 7,
+     "name": "Troy Lensing",
+     "avg": "4.18",
+     "score": 251
+    },
+    {
+     "rank": 8,
+     "name": "Matthew Fleetwood",
+     "avg": "4.15",
+     "score": 249
+    },
+    {
+     "rank": 9,
+     "name": "Keith Bain",
+     "avg": "4.03",
+     "score": 242
+    },
+    {
+     "rank": 10,
+     "name": "Jeffrey Stewart",
+     "avg": "4.02",
+     "score": 241
+    },
+    {
+     "rank": 11,
+     "name": "Sherry Kessler",
+     "avg": "4.02",
+     "score": 241
+    },
+    {
+     "rank": 12,
+     "name": "Paul Moreau",
+     "avg": "3.97",
+     "score": 238
+    },
+    {
+     "rank": 13,
+     "name": "Jessica Garcia",
+     "avg": "3.90",
+     "score": 234
+    },
+    {
+     "rank": 14,
+     "name": "Kelley Garrett",
+     "avg": "3.80",
+     "score": 228
+    },
+    {
+     "rank": 15,
+     "name": "Kristie Bocanegra",
+     "avg": "3.65",
+     "score": 219
+    },
+    {
+     "rank": 16,
+     "name": "Cynthia Dinwiddie",
+     "avg": "3.63",
+     "score": 218
+    },
+    {
+     "rank": 17,
+     "name": "George Wilhite",
+     "avg": "3.53",
+     "score": 212
+    },
+    {
+     "rank": 18,
+     "name": "Anna Gonzales",
+     "avg": "3.42",
+     "score": 205
+    },
+    {
+     "rank": 19,
+     "name": "Maddison Sossamon",
+     "avg": "3.35",
+     "score": 201
+    },
+    {
+     "rank": 20,
+     "name": "Jonathan Laas",
+     "avg": "3.32",
+     "score": 199
+    },
+    {
+     "rank": 21,
+     "name": "Rebecca Wilhite",
+     "avg": "3.25",
+     "score": 195
+    },
+    {
+     "rank": 22,
+     "name": "Jessica Corbett",
+     "avg": "2.97",
+     "score": 178
+    },
+    {
+     "rank": 23,
+     "name": "Beverly Wygal",
+     "avg": "2.65",
+     "score": 159
+    },
+    {
+     "rank": 24,
+     "name": "Dieter Galvan",
+     "avg": "2.63",
+     "score": 158
+    },
+    {
+     "rank": 25,
+     "name": "Alan Retamozo",
+     "avg": "2.47",
+     "score": 148
+    },
+    {
+     "rank": 26,
+     "name": "Terry Wygal",
+     "avg": "2.43",
+     "score": 146
+    },
+    {
+     "rank": 27,
+     "name": "David Paul",
+     "avg": "2.13",
+     "score": 128
+    },
+    {
+     "rank": 28,
+     "name": "William Flores",
+     "avg": "1.57",
+     "score": 94
+    },
+    {
+     "rank": 29,
+     "name": "Robert Schneider",
+     "avg": "1.48",
+     "score": 89
+    }
+   ],
+   "eliminationRounds": [
+    {
+     "round": 1,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Clifton Montgomery",
+       "ends": [
+        21,
+        28,
+        24
+       ],
+       "score": 73,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Robert Garcia",
+       "ends": [
+        25,
+        25,
+        24
+       ],
+       "score": 74,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Stacey Carmichael",
+       "ends": [
+        20,
+        23,
+        27
+       ],
+       "score": 70,
+       "winner": false
+      },
+      {
+       "rank": 4,
+       "name": "Matthew Epp",
+       "ends": [
+        20,
+        24,
+        20
+       ],
+       "score": 64,
+       "winner": true
+      },
+      {
+       "rank": 5,
+       "name": "Robby Rodriguez Jr.",
+       "ends": [
+        20,
+        23,
+        20
+       ],
+       "score": 63,
+       "winner": true
+      },
+      {
+       "rank": 6,
+       "name": "Suzi Swanson",
+       "ends": [
+        22,
+        19,
+        21
+       ],
+       "score": 62,
+       "winner": false
+      },
+      {
+       "rank": 7,
+       "name": "Troy Lensing",
+       "ends": [
+        20,
+        19,
+        20
+       ],
+       "score": 59,
+       "winner": true
+      },
+      {
+       "rank": 8,
+       "name": "Matthew Fleetwood",
+       "ends": [
+        24,
+        22,
+        23
+       ],
+       "score": 69,
+       "winner": false
+      },
+      {
+       "rank": 9,
+       "name": "Keith Bain",
+       "ends": [
+        28,
+        23,
+        19
+       ],
+       "score": 70,
+       "winner": true
+      },
+      {
+       "rank": 10,
+       "name": "Jeffrey Stewart",
+       "ends": [
+        20,
+        18,
+        18
+       ],
+       "score": 56,
+       "winner": false
+      },
+      {
+       "rank": 11,
+       "name": "Sherry Kessler",
+       "ends": [
+        23,
+        25,
+        25
+       ],
+       "score": 73,
+       "winner": true
+      },
+      {
+       "rank": 12,
+       "name": "Paul Moreau",
+       "ends": [
+        22,
+        18,
+        23
+       ],
+       "score": 63,
+       "winner": false
+      },
+      {
+       "rank": 13,
+       "name": "Jessica Garcia",
+       "ends": [
+        25,
+        19,
+        20
+       ],
+       "score": 64,
+       "winner": false
+      },
+      {
+       "rank": 14,
+       "name": "Kelley Garrett",
+       "ends": [
+        0,
+        0,
+        0
+       ],
+       "score": 0,
+       "winner": false
+      },
+      {
+       "rank": 15,
+       "name": "Kristie Bocanegra",
+       "ends": [
+        21,
+        15,
+        19
+       ],
+       "score": 55,
+       "winner": false
+      },
+      {
+       "rank": 16,
+       "name": "Cynthia Dinwiddie",
+       "ends": [
+        19,
+        18,
+        14
+       ],
+       "score": 51,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 2,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Clifton Montgomery",
+       "ends": [
+        24,
+        22,
+        23
+       ],
+       "score": 69,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Robert Garcia",
+       "ends": [
+        23,
+        27,
+        23
+       ],
+       "score": 73,
+       "winner": true
+      },
+      {
+       "rank": 3,
+       "name": "Stacey Carmichael",
+       "ends": [
+        24,
+        24,
+        23
+       ],
+       "score": 71,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Matthew Epp",
+       "ends": [
+        22,
+        25,
+        19
+       ],
+       "score": 66,
+       "winner": true
+      },
+      {
+       "rank": 5,
+       "name": "Robby Rodriguez Jr.",
+       "ends": [
+        16,
+        19,
+        19
+       ],
+       "score": 54,
+       "winner": false
+      },
+      {
+       "rank": 7,
+       "name": "Troy Lensing",
+       "ends": [
+        18,
+        21,
+        20
+       ],
+       "score": 59,
+       "winner": false
+      },
+      {
+       "rank": 9,
+       "name": "Keith Bain",
+       "ends": [
+        23,
+        23,
+        22
+       ],
+       "score": 68,
+       "winner": false
+      },
+      {
+       "rank": 11,
+       "name": "Sherry Kessler",
+       "ends": [
+        20,
+        23,
+        23
+       ],
+       "score": 66,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 3,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Clifton Montgomery",
+       "ends": [
+        20,
+        24,
+        27
+       ],
+       "score": 71,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Robert Garcia",
+       "ends": [
+        21,
+        24,
+        22
+       ],
+       "score": 67,
+       "winner": false
+      },
+      {
+       "rank": 3,
+       "name": "Stacey Carmichael",
+       "ends": [
+        22,
+        27,
+        23
+       ],
+       "score": 72,
+       "winner": true
+      },
+      {
+       "rank": 4,
+       "name": "Matthew Epp",
+       "ends": [
+        20,
+        22,
+        22
+       ],
+       "score": 64,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "round": 4,
+     "results": [
+      {
+       "rank": 1,
+       "name": "Clifton Montgomery",
+       "ends": [
+        22,
+        20,
+        22
+       ],
+       "score": 64,
+       "winner": true
+      },
+      {
+       "rank": 2,
+       "name": "Robert Garcia",
+       "ends": [
+        22,
+        18,
+        22
+       ],
+       "score": 62,
+       "winner": false
+      },
+      {
+       "rank": 3,
+       "name": "Stacey Carmichael",
+       "ends": [
+        21,
+        22,
+        19
+       ],
+       "score": 62,
+       "winner": false
+      },
+      {
+       "rank": 4,
+       "name": "Matthew Epp",
+       "ends": [
+        23,
+        25,
+        24
+       ],
+       "score": 72,
+       "winner": true
+      }
+     ]
+    }
+   ],
+   "champion": "Clifton Montgomery"
+  }
+ ]
+}
