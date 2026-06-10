@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "description": "Standalone public leaderboard aggregating EyesonScore completed scores into best-3-of-N series rankings",
   "scripts": {
     "dev": "next dev",

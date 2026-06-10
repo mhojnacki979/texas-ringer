@@ -22,18 +22,24 @@ export function UploadForm() {
       body.append('file', file)
       // Auth: the httpOnly session cookie rides along automatically.
       const res = await fetch('/api/import', { method: 'POST', body })
-      const json: unknown = await res.json()
+      const text = await res.text()
+      let json: unknown = null
+      try {
+        json = JSON.parse(text)
+      } catch {
+        // non-JSON body (e.g. a bare 500) — fall through to status-based message
+      }
       if (!res.ok) {
         const message =
           typeof json === 'object' && json !== null && 'error' in json
             ? String((json as { error: unknown }).error)
-            : `upload failed (${res.status})`
+            : `upload failed (HTTP ${res.status})`
         setState({ status: 'failed', message })
         return
       }
       setState({ status: 'done', summary: json as DbImportSummary })
     } catch {
-      setState({ status: 'failed', message: 'network error — is the server running?' })
+      setState({ status: 'failed', message: 'could not reach the server — check your connection and retry' })
     }
   }
 

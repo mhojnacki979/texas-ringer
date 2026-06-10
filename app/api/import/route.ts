@@ -30,7 +30,9 @@ async function readCsvBody(request: NextRequest): Promise<string | null> {
   if (contentType.includes('multipart/form-data')) {
     const form = await request.formData()
     const file = form.get('file')
-    if (!(file instanceof File)) return null
+    // Blob, not File: the File global is missing on older Node runtimes,
+    // and formData file entries are Blob subclasses everywhere.
+    if (!(file instanceof Blob)) return null
     if (file.size > MAX_CSV_BYTES) return null
     return file.text()
   }
