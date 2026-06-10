@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { rankSeries, segmentKey } from './engine.js'
-import type { ArcherEntry, EventScore } from './types.js'
+import { rankSeries, segmentKey } from './engine'
+import type { ArcherEntry, EventScore } from './types'
 
 function s(total: number, eventId: string): EventScore {
   return { eventId, eventName: eventId, eventDate: '2026-01-01', total }

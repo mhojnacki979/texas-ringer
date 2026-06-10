@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { importCsv } from './import.js'
+import { importCsv } from './import'
 
 const HEADER =
   'series,round_format,usa_archery_no,archer_name,division,gender,age_class,event_id,event_name,event_date,total_score,arrows'

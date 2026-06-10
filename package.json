@@ -5,16 +5,29 @@
   "type": "module",
   "description": "Standalone public leaderboard aggregating EyesonScore completed scores into best-3-of-N series rankings",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "standings": "tsx scripts/import-csv.ts"
+    "standings": "tsx scripts/import-csv.ts",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:import": "tsx scripts/import-db.ts"
   },
   "dependencies": {
+    "@prisma/client": "^6.8.0",
+    "next": "^15.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20.14.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "prisma": "^6.8.0",
     "tsx": "^4.16.0",
     "typescript": "^5.5.0",
     "vitest": "^2.0.0"

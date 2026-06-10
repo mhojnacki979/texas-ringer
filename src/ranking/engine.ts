@@ -14,7 +14,7 @@ import {
   type ArcherRanking,
   type EventScore,
   type Segment,
-} from './types.js'
+} from './types'
 
 /** Stable, human-readable key for a segment leaderboard. */
 export function segmentKey(s: Segment): string {

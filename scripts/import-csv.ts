@@ -7,8 +7,8 @@
  * database (Prisma) is a later phase; this proves the pipeline works now.
  */
 import { readFileSync } from 'node:fs'
-import { importCsv } from '../src/import/import.js'
-import { rankSeries } from '../src/ranking/engine.js'
+import { importCsv } from '../src/import/import'
+import { rankSeries } from '../src/ranking/engine'
 
 const path = process.argv[2]
 if (path === undefined) {

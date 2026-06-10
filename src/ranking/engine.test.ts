@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { computeArcherRanking, rankSegment } from './engine.js'
-import type { ArcherEntry, EventScore, Segment } from './types.js'
+import { computeArcherRanking, rankSegment } from './engine'
+import type { ArcherEntry, EventScore, Segment } from './types'
 
 const SEG: Segment = { division: 'Compound', gender: 'Male', ageClass: 'Senior' }
 
