@@ -26,7 +26,7 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
       <p className="page-subtitle">
         {series.eventCount} events · {series.archerCount} archers · Best of Three Series
       </p>
-      <SegmentBoards seriesSlug={series.slug} boards={boards} />
+      <SegmentBoards seriesSlug={series.slug} series={series} boards={boards} />
     </>
   )
 }
