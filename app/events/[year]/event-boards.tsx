@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import type { EventDivision } from '@/data/events'
 import { DivisionBracket } from './division-bracket'
+import { RoundsView } from './rounds-view'
 
-type ViewMode = 'bracket' | 'qualification'
+type ViewMode = 'bracket' | 'rounds' | 'qualification'
 
 function QualTable({ division }: { division: EventDivision }) {
   return (
@@ -74,24 +75,18 @@ export function EventBoards({ divisions }: { divisions: EventDivision[] }) {
 
         {hasBracket && (
           <div className="view-toggle" role="tablist" aria-label="View">
-            <button
-              type="button"
-              role="tab"
-              aria-selected={view === 'bracket'}
-              className="view-toggle-btn"
-              onClick={() => setView('bracket')}
-            >
-              Bracket
-            </button>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={view === 'qualification'}
-              className="view-toggle-btn"
-              onClick={() => setView('qualification')}
-            >
-              Qualification
-            </button>
+            {(['bracket', 'rounds', 'qualification'] as const).map((mode) => (
+              <button
+                key={mode}
+                type="button"
+                role="tab"
+                aria-selected={view === mode}
+                className="view-toggle-btn"
+                onClick={() => setView(mode)}
+              >
+                {mode}
+              </button>
+            ))}
           </div>
         )}
       </div>
@@ -103,7 +98,9 @@ export function EventBoards({ divisions }: { divisions: EventDivision[] }) {
         </div>
       )}
 
-      {showBracket ? <DivisionBracket division={active} /> : <QualTable division={active} />}
+      {showBracket && <DivisionBracket division={active} />}
+      {view === 'rounds' && hasBracket && <RoundsView division={active} />}
+      {(view === 'qualification' || !hasBracket) && <QualTable division={active} />}
     </section>
   )
 }

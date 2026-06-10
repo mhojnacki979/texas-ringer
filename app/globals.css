@@ -933,6 +933,128 @@ a.button:hover {
   padding: 0.9rem 0.8rem;
 }
 
+/* ---------- Round-by-round head-to-head view ---------- */
+
+.round-block {
+  margin-bottom: 1.75rem;
+}
+
+.round-block-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  font-family: var(--font-condensed);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 0.7rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--red);
+}
+
+.round-block-count {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.round-block-matches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 0.6rem;
+}
+
+.vs-match {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.vs-side {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.7rem;
+}
+
+.vs-right {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.vs-side.is-winner {
+  background: var(--surface-raised);
+}
+
+.vs-side.is-winner .vs-name {
+  color: #fff;
+  font-weight: 700;
+}
+
+.vs-side.is-winner .vs-score {
+  color: var(--gold);
+}
+
+.vs-side.is-bye {
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-family: var(--font-condensed);
+  font-size: 0.85rem;
+}
+
+.vs-seed {
+  flex: none;
+  width: 1.3rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.vs-side.is-winner .vs-seed {
+  color: var(--red);
+}
+
+.vs-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vs-score {
+  flex: none;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.vs-divider {
+  display: flex;
+  align-items: center;
+  padding: 0 0.55rem;
+  font-family: var(--font-condensed);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--surface-strip);
+}
+
 /* ---------- Leaderboard table ---------- */
 
 .table-wrap {
