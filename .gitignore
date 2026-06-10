@@ -11,3 +11,6 @@ prisma/*.db-journal
 coverage/
 tsconfig.tsbuildinfo
 .claude/memory.db
+ruvector.db
+.claude-flow/
+.swarm/
