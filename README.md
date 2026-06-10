@@ -57,9 +57,9 @@ One row per archer per event. Header required; column order does not matter.
 | `round_format` | yes | Must be identical for every row in a series (e.g. `300`) |
 | `usa_archery_no` | yes | Stable archer identity across events |
 | `archer_name` | yes | Display name |
-| `division` | yes | e.g. `Compound`, `Recurve`, `Barebow` |
-| `gender` | yes | e.g. `Male`, `Female` |
-| `age_class` | yes | e.g. `Senior`, `Cub`, `Master` |
+| `division` | yes | Texas Ringer: `Recurve`, `Barebow`, `Freestyle Compound`, `Bowhunter` |
+| `gender` | yes | Texas Ringer: `Men`, `Women` |
+| `age_class` | yes | Texas Ringer: `13U`, `17U`, `Adults` |
 | `event_id` | yes | Unique per tournament; dedupes per archer |
 | `event_name` | yes | Display name |
 | `event_date` | yes | ISO `YYYY-MM-DD` |
@@ -67,6 +67,11 @@ One row per archer per event. Header required; column order does not matter.
 | `arrows` | no | Space/semicolon-separated arrow values (e.g. `10 9 9 7`); enables the "most 7s" tiebreaker |
 
 See [`examples/sample-series.csv`](examples/sample-series.csv).
+
+Segments are data-driven: every distinct division × gender × age_class
+combination in the CSV gets its own leaderboard (Texas Ringer: 4 × 2 × 3 = 24).
+Values must match exactly across events — `Adults` and `Adult` would create
+two separate leaderboards.
 
 ## Ranking & tiebreakers
 

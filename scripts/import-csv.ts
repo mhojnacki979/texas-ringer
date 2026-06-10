@@ -8,7 +8,7 @@
  */
 import { readFileSync } from 'node:fs'
 import { importCsv } from '../src/import/import'
-import { rankSeries } from '../src/ranking/engine'
+import { rankSeries, segmentKey } from '../src/ranking/engine'
 
 const path = process.argv[2]
 if (path === undefined) {
@@ -33,8 +33,10 @@ for (const [series, entries] of result.entriesBySeries) {
   console.log(`\n=== Series: ${series}  (round: ${format}) ===`)
 
   const segments = rankSeries(entries)
-  for (const [segment, rankings] of segments) {
-    console.log(`\n  ${segment}`)
+  for (const [, rankings] of segments) {
+    const seg = rankings[0]?.segment
+    const label = seg ? segmentKey(seg) : '(empty segment)'
+    console.log(`\n  ${label}`)
     console.log('  Rank  Archer                USA#       Best3   Avg     Events  Counted')
     for (const r of rankings) {
       const rank = r.rank === null ? 'prov' : String(r.rank)
