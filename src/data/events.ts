@@ -50,3 +50,22 @@ export function listEvents(): AnnualEvent[] {
 export function getEvent(year: number): AnnualEvent | null {
   return EVENTS.find((e) => e.year === year) ?? null
 }
+
+/** Standard archery elimination round names, counting back from the final. */
+const ROUND_NAMES_FROM_FINAL = [
+  'Finals',
+  'Semi Finals',
+  'Quarter Finals',
+  '1/8th Round',
+  '1/16th Round',
+] as const
+
+/**
+ * Label a shoot-off round by its position from the final. The last round is
+ * always "Finals", the prior is "Semi Finals", etc. — matching how Eyes on
+ * Score names the rounds, regardless of how many an undersized field needed.
+ */
+export function roundLabel(roundIndex: number, totalRounds: number): string {
+  const fromEnd = totalRounds - 1 - roundIndex
+  return ROUND_NAMES_FROM_FINAL[fromEnd] ?? `Round ${roundIndex + 1}`
+}

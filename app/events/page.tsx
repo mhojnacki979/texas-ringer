@@ -14,7 +14,7 @@ export default function EventsPage() {
       <span className="eyebrow">The Annual Event</span>
       <h1 className="page-title">Previous Events</h1>
       <p className="page-subtitle">
-        Qualification standings and shoot-up eliminations from every Texas Ringer
+        Qualification standings and shoot-off finals from every Texas Ringer
       </p>
       <div className="series-grid">
         {events.map((e) => (

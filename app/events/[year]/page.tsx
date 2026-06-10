@@ -25,8 +25,8 @@ export default async function EventPage({ params }: EventPageProps) {
       <span className="eyebrow">{event.venue} · {event.date}</span>
       <h1 className="page-title">{event.name}</h1>
       <p className="page-subtitle">
-        {event.divisions.length} divisions · {event.archers} archers · qualification + shoot-up
-        eliminations
+        {event.divisions.length} divisions · {event.archers} archers · qualification + shoot-off
+        finals
       </p>
       <EventBoards divisions={event.divisions} />
     </>
