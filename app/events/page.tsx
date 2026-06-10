@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { listEvents } from '@/data/events'
 
 export const metadata: Metadata = {
-  title: 'Records — The Texas Ringer',
+  title: 'Previous Events — The Texas Ringer',
 }
 
 export default function EventsPage() {
@@ -11,8 +11,8 @@ export default function EventsPage() {
 
   return (
     <>
-      <span className="eyebrow">Records</span>
-      <h1 className="page-title">Annual Event Results</h1>
+      <span className="eyebrow">The Annual Event</span>
+      <h1 className="page-title">Previous Events</h1>
       <p className="page-subtitle">
         Qualification standings and shoot-up eliminations from every Texas Ringer
       </p>
