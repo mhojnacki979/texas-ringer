@@ -24,7 +24,7 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
       <span className="eyebrow">{series.roundFormat} round</span>
       <h1 className="page-title">{series.name}</h1>
       <p className="page-subtitle">
-        {series.eventCount} events · {series.archerCount} archers · best 3 scores count
+        {series.eventCount} events · {series.archerCount} archers · Best of Three Series
       </p>
       <SegmentBoards seriesSlug={series.slug} boards={boards} />
     </>

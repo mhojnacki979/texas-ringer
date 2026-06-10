@@ -99,7 +99,7 @@ export default async function ArcherPage({ params }: ArcherPageProps) {
       </Link>
       <span className="eyebrow mono">USA Archery #{detail.usaArcheryNo}</span>
       <h1 className="page-title">{detail.name}</h1>
-      <p className="page-subtitle">{detail.seriesName} · best 3 scores count toward rank</p>
+      <p className="page-subtitle">{detail.seriesName} · Best of Three Series</p>
       {detail.rankings.map((ranking) => (
         <SegmentSection
           key={`${ranking.segment.division}-${ranking.segment.gender}-${ranking.segment.ageClass}`}

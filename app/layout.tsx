@@ -24,7 +24,7 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   title: 'The Texas Ringer — Series Rankings',
   description:
-    'Official best-3-of-N archery series standings for The Texas Ringer, powered by Eyes on Score.',
+    'Official Best of Three Series archery standings for The Texas Ringer, powered by Eyes on Score.',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </header>
         <main className="site-main">{children}</main>
         <footer className="site-footer">
-          The Texas Ringer · Powered by Eyes on Score · Best 3 of N series standings ·{' '}
+          The Texas Ringer · Powered by Eyes on Score · Best of Three Series ·{' '}
           <Link href="/admin" className="muted">
             Admin
           </Link>

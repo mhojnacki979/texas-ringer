@@ -10,9 +10,7 @@ export default async function HomePage() {
     <>
       <span className="eyebrow">Live Standings</span>
       <h1 className="page-title">The Texas Ringer</h1>
-      <p className="page-subtitle">
-        Best 3 of N — only an archer&apos;s three highest event scores count toward their rank.
-      </p>
+      <p className="page-subtitle">Best of Three Series</p>
 
       <div className="series-grid">
         {series.map((s) => (
