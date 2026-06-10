@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react'
 import type { EventDivision } from '@/data/events'
 import { roundLabel } from '@/data/events'
+import { DivisionBracket } from './division-bracket'
 
 /** Tabs across a division: Qualification, then each shoot-off round. */
 interface RoundTab {
@@ -103,9 +104,12 @@ function ElimTable({ division, roundIndex }: { division: EventDivision; roundInd
   )
 }
 
+type ViewMode = 'bracket' | 'rounds'
+
 export function EventBoards({ divisions }: { divisions: EventDivision[] }) {
   const [activeName, setActiveName] = useState(divisions[0]?.name ?? '')
   const active = divisions.find((d) => d.name === activeName) ?? divisions[0]
+  const [view, setView] = useState<ViewMode>('bracket')
   const tabs = useMemo(() => (active ? buildTabs(active) : []), [active])
   // Default to the Finals tab — the result everyone wants first.
   const [activeTab, setActiveTab] = useState('')
@@ -120,23 +124,50 @@ export function EventBoards({ divisions }: { divisions: EventDivision[] }) {
     setActiveTab('') // reset to Finals for the newly selected division
   }
 
+  const hasBracket = active.eliminationRounds.length > 0
+
   return (
     <section aria-label="Event results">
-      <label className="segment-picker">
-        <span className="segment-picker-label">Division</span>
-        <select
-          className="segment-select"
-          value={active.name}
-          onChange={(e) => onDivisionChange(e.target.value)}
-          aria-label="Choose a division"
-        >
-          {divisions.map((d) => (
-            <option key={d.name} value={d.name}>
-              {d.name}
-            </option>
-          ))}
-        </select>
-      </label>
+      <div className="event-controls">
+        <label className="segment-picker">
+          <span className="segment-picker-label">Division</span>
+          <select
+            className="segment-select"
+            value={active.name}
+            onChange={(e) => onDivisionChange(e.target.value)}
+            aria-label="Choose a division"
+          >
+            {divisions.map((d) => (
+              <option key={d.name} value={d.name}>
+                {d.name}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        {hasBracket && (
+          <div className="view-toggle" role="tablist" aria-label="View">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={view === 'bracket'}
+              className="view-toggle-btn"
+              onClick={() => setView('bracket')}
+            >
+              Bracket
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={view === 'rounds'}
+              className="view-toggle-btn"
+              onClick={() => setView('rounds')}
+            >
+              Rounds
+            </button>
+          </div>
+        )}
+      </div>
 
       {active.champion !== null && (
         <div className="champion-card">
@@ -145,25 +176,30 @@ export function EventBoards({ divisions }: { divisions: EventDivision[] }) {
         </div>
       )}
 
-      <div className="round-tabs" role="tablist" aria-label="Rounds">
-        {tabs.map((t) => (
-          <button
-            key={t.key}
-            type="button"
-            role="tab"
-            aria-selected={t.key === currentTab.key}
-            className="round-tab"
-            onClick={() => setActiveTab(t.key)}
-          >
-            {t.label}
-          </button>
-        ))}
-      </div>
-
-      {currentTab.kind === 'qualification' ? (
-        <QualTable division={active} />
+      {view === 'bracket' && hasBracket ? (
+        <DivisionBracket division={active} />
       ) : (
-        <ElimTable division={active} roundIndex={currentTab.roundIndex} />
+        <>
+          <div className="round-tabs" role="tablist" aria-label="Rounds">
+            {tabs.map((t) => (
+              <button
+                key={t.key}
+                type="button"
+                role="tab"
+                aria-selected={t.key === currentTab.key}
+                className="round-tab"
+                onClick={() => setActiveTab(t.key)}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+          {currentTab.kind === 'qualification' ? (
+            <QualTable division={active} />
+          ) : (
+            <ElimTable division={active} roundIndex={currentTab.roundIndex} />
+          )}
+        </>
       )}
     </section>
   )

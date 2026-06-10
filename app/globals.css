@@ -758,6 +758,175 @@ a.button:hover {
   background: rgba(245, 169, 46, 0.07);
 }
 
+/* ---------- Event controls + view toggle ---------- */
+
+.event-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.view-toggle {
+  display: inline-flex;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.view-toggle-btn {
+  font-family: var(--font-condensed);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.view-toggle-btn[aria-selected='true'] {
+  background: var(--red);
+  color: #fff;
+}
+
+/* ---------- Progression bracket ---------- */
+
+.bracket-scroll {
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+}
+
+.bracket-grid {
+  display: flex;
+  gap: 0;
+  min-width: min-content;
+}
+
+.bracket-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 178px;
+  padding: 0 0.6rem;
+  border-left: 1px solid var(--border);
+}
+
+.bracket-col:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+.bracket-col-champion {
+  justify-content: flex-start;
+}
+
+.bracket-col-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0 0.2rem 0.6rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 2px solid var(--border-strong);
+}
+
+.bracket-col-name {
+  font-family: var(--font-condensed);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.bracket-col-name.is-gold {
+  color: var(--gold);
+}
+
+.bracket-col-count {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.bracket-col-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.bracket-card {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.6rem;
+}
+
+.bracket-card.is-advanced {
+  border-color: var(--red-border);
+  background: var(--surface-raised);
+}
+
+.bracket-card.is-champion {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+}
+
+.bracket-seed {
+  flex: none;
+  width: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.is-advanced .bracket-seed {
+  color: var(--red);
+}
+
+.bracket-card-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bracket-card-score {
+  flex: none;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.bracket-champion-final {
+  margin-top: 0.1rem;
+  padding: 0.9rem 0.8rem;
+  justify-content: center;
+}
+
+.bracket-champion-final .bracket-card-name {
+  flex: initial;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #fff;
+  white-space: normal;
+}
+
 /* ---------- Leaderboard table ---------- */
 
 .table-wrap {
