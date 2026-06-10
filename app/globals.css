@@ -994,15 +994,11 @@ a.button:hover {
   color: var(--bronze);
 }
 
-/* 3rd-place game, pulled out below the bracket so the championship centres. */
-.bronze-block {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  max-width: 240px;
-  margin-top: 1.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border);
+/* Finals column: Championship on top, 3rd Place Match stacked below it,
+   the pair centred so the championship aligns with the Champion box. */
+.bracket-col-finals .bracket-col-matches {
+  justify-content: center;
+  gap: 1.5rem;
 }
 
 .bracket-col-champion .bracket-col-matches {
