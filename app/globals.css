@@ -162,8 +162,8 @@ button:focus-visible {
 }
 
 .wordmark-target {
-  width: 1.05rem;
-  height: 1.05rem;
+  width: auto;
+  height: 2.15rem;
   flex: none;
   transform: translateY(1px);
 }
@@ -382,11 +382,12 @@ button:focus-visible {
 
 .leader-card-target {
   position: absolute;
-  right: -78px;
-  bottom: -86px;
-  width: 280px;
-  height: 280px;
+  right: -38px;
+  bottom: -70px;
+  width: auto;
+  height: 300px;
   opacity: 0.14;
+  transform: rotate(12deg);
 }
 
 .leader-card-inner {

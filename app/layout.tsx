@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { Anton, Barlow, Playfair_Display, Saira_Condensed } from 'next/font/google'
+import Image from 'next/image'
 import Link from 'next/link'
 import './globals.css'
 
@@ -38,19 +39,17 @@ export const metadata: Metadata = {
     'Official Best of Three Series archery standings for The Texas Ringer, powered by Eyes on Score.',
 }
 
-/** Concentric Ringer-target mark used in the wordmark. */
+/** Official Texas Ringer arrowhead mark (Texas flag + feather). */
 function RingerMark() {
   return (
-    <svg className="wordmark-target" viewBox="0 0 32 32" aria-hidden="true">
-      <circle cx="16" cy="16" r="15" fill="#1b2a63" />
-      <circle cx="16" cy="16" r="11" fill="#fff" />
-      <circle cx="16" cy="16" r="7.5" fill="#d11f2d" />
-      <circle cx="16" cy="16" r="3.4" fill="#fff" />
-      <path
-        d="M16 13.4l0.8 1.7 1.9 0.2-1.4 1.3 0.4 1.8L16 17.6l-1.7 0.8 0.4-1.8-1.4-1.3 1.9-0.2z"
-        fill="#1b2a63"
-      />
-    </svg>
+    <Image
+      src="/brand/ringer-mark.png"
+      alt=""
+      width={19}
+      height={34}
+      className="wordmark-target"
+      priority
+    />
   )
 }
 

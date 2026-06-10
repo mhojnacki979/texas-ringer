@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import type { SegmentBoard, SeriesSummary } from '@/data/types'
 import type { ArcherRanking, EventScore } from '@/ranking/types'
@@ -28,19 +29,17 @@ function segmentLabel(board: SegmentBoard): string {
   return `${s.division} / ${s.gender} / ${s.ageClass}`
 }
 
-/** Concentric Ringer-target mark, used as a watermark on the leader card. */
+/** Official Texas Ringer arrowhead mark, used as a watermark on the leader card. */
 function RingerTarget({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 32 32" aria-hidden="true">
-      <circle cx="16" cy="16" r="15" fill="#1b2a63" />
-      <circle cx="16" cy="16" r="11" fill="#fff" />
-      <circle cx="16" cy="16" r="7.5" fill="#d11f2d" />
-      <circle cx="16" cy="16" r="3.4" fill="#fff" />
-      <path
-        d="M16 13.4l0.8 1.7 1.9 0.2-1.4 1.3 0.4 1.8L16 17.6l-1.7 0.8 0.4-1.8-1.4-1.3 1.9-0.2z"
-        fill="#1b2a63"
-      />
-    </svg>
+    <Image
+      src="/brand/ringer-mark.png"
+      alt=""
+      width={165}
+      height={300}
+      className={className}
+      aria-hidden="true"
+    />
   )
 }
 
