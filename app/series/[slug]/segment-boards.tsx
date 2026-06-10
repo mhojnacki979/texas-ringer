@@ -33,7 +33,7 @@ function segmentLabel(board: SegmentBoard): string {
 function RingerTarget({ className }: { className?: string }) {
   return (
     <Image
-      src="/brand/ringer-mark.png"
+      src="/brand/ringer-mark-white.png"
       alt=""
       width={165}
       height={300}

@@ -27,7 +27,7 @@ function Hero() {
   return (
     <section className="hero">
       <Image
-        src="/brand/ringer-mark.png"
+        src="/brand/ringer-mark-white.png"
         alt=""
         width={220}
         height={400}

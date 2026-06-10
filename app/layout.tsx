@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 function RingerMark() {
   return (
     <Image
-      src="/brand/ringer-mark.png"
+      src="/brand/ringer-mark-white.png"
       alt=""
       width={19}
       height={34}
