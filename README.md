@@ -13,7 +13,7 @@ if they beat the current lowest counted score. Leaderboards are segmented by
 
 - ✅ Ranking engine (best-3, tiebreakers, provisional handling) — fully tested
 - ✅ CSV import (parse + validate + group + rank) — fully tested
-- ✅ Persistence — Prisma + SQLite (Postgres-compatible schema), idempotent CSV import
+- ✅ Persistence — Prisma + Postgres (Railway), idempotent transactional CSV import
 - ✅ Public web UI — Next.js 15: series index, segmented leaderboards, archer detail
 - ✅ Admin upload — `/admin` page + token-protected `POST /api/import`
 - ⏳ Railway deploy, auto-pull from Eyes on Score
@@ -26,7 +26,7 @@ Score will plug in behind the same import boundary later.
 ```bash
 pnpm install
 pnpm db:generate                # generate the Prisma client
-pnpm db:migrate                 # create/update the local SQLite db
+pnpm db:migrate                 # apply migrations (Postgres, DATABASE_URL in .env)
 pnpm db:import <path-to.csv>    # import scores into the database (idempotent)
 pnpm dev                        # run the site at http://localhost:3000
 

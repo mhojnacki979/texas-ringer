@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { ADMIN_SESSION_COOKIE, verifySessionToken } from '@/auth/session'
+import { sessionCookieName, verifySessionToken } from '@/auth/session'
 import { UploadForm } from './upload-form'
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default async function AdminPage() {
   const jar = await cookies()
-  const session = jar.get(ADMIN_SESSION_COOKIE)?.value ?? ''
+  const session = jar.get(sessionCookieName())?.value ?? ''
   if (!verifySessionToken(session, process.env.SESSION_SECRET ?? '')) redirect('/admin/login')
 
   return (

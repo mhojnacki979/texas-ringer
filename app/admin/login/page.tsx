@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { ADMIN_SESSION_COOKIE, verifySessionToken } from '@/auth/session'
+import { sessionCookieName, verifySessionToken } from '@/auth/session'
 
 export const metadata: Metadata = {
   title: 'Sign In — The Texas Ringer',
@@ -14,7 +14,7 @@ interface LoginPageProps {
 
 export default async function LoginPage({ searchParams }: LoginPageProps) {
   const jar = await cookies()
-  const session = jar.get(ADMIN_SESSION_COOKIE)?.value ?? ''
+  const session = jar.get(sessionCookieName())?.value ?? ''
   if (verifySessionToken(session, process.env.SESSION_SECRET ?? '')) redirect('/admin')
 
   const { error } = await searchParams
@@ -31,7 +31,12 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         <button type="submit" className="button">
           Sign in
         </button>
-        {error !== undefined && (
+        {error === 'locked' && (
+          <p className="result-box result-error">
+            Too many failed attempts — wait 15 minutes and try again.
+          </p>
+        )}
+        {error !== undefined && error !== 'locked' && (
           <p className="result-box result-error">Wrong password — try again.</p>
         )}
       </form>

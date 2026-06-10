@@ -70,6 +70,11 @@ function BoardTable({ seriesSlug, board }: { seriesSlug: string; board: SegmentB
   )
 }
 
+function segmentLabel(board: SegmentBoard): string {
+  const s = board.segment
+  return `${s.division} / ${s.gender} / ${s.ageClass}`
+}
+
 export function SegmentBoards({ seriesSlug, boards }: SegmentBoardsProps) {
   const [activeKey, setActiveKey] = useState(boards[0]?.key ?? '')
   const active = boards.find((b) => b.key === activeKey) ?? boards[0]
@@ -90,7 +95,7 @@ export function SegmentBoards({ seriesSlug, boards }: SegmentBoardsProps) {
             className="segment-pill"
             onClick={() => setActiveKey(b.key)}
           >
-            {b.key}
+            {segmentLabel(b)}
           </button>
         ))}
       </div>

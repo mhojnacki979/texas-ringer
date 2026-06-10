@@ -7,7 +7,7 @@
  * lives ONLY in src/ranking/engine.
  */
 import type { PrismaClient } from '@prisma/client'
-import { rankSeries, segmentKey } from '../ranking/engine'
+import { rankSeries, segmentBucketKey } from '../ranking/engine'
 import type { ArcherEntry, EventScore } from '../ranking/types'
 import { prisma } from '../db/client'
 import type { ArcherDetail, SeriesStandings, SeriesSummary } from './types'
@@ -39,7 +39,7 @@ function buildEntries(rows: ScoreWithEvent[]): ArcherEntry[] {
   const byArcherSegment = new Map<string, ArcherEntry>()
   for (const row of rows) {
     const segment = { division: row.division, gender: row.gender, ageClass: row.ageClass }
-    const key = `${segmentKey(segment)} ${row.usaArcheryNo}`
+    const key = `${segmentBucketKey(segment)} ${row.usaArcheryNo}`
     let entry = byArcherSegment.get(key)
     if (entry === undefined) {
       entry = { usaArcheryNo: row.usaArcheryNo, name: row.archerName, segment, scores: [] }

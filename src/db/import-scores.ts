@@ -6,11 +6,14 @@
  * constraints — re-importing the same CSV is fully idempotent (no duplicates;
  * changed totals/names update in place).
  */
-import type { PrismaClient } from '@prisma/client'
+import type { Prisma, PrismaClient } from '@prisma/client'
 import { importCsv, type ImportError } from '../import/import'
 import type { ArcherEntry } from '../ranking/types'
 import { slugify } from '../data/slug'
 import { prisma } from './client'
+
+/** persistSeries runs inside a transaction; tests may pass a bare client. */
+type Db = PrismaClient | Prisma.TransactionClient
 
 export interface DbImportSummary {
   seriesImported: number
@@ -30,7 +33,7 @@ function collectEvents(entries: ArcherEntry[]): Map<string, { name: string; date
 }
 
 async function persistSeries(
-  db: PrismaClient,
+  db: Db,
   name: string,
   roundFormat: string,
   entries: ArcherEntry[],
@@ -100,7 +103,12 @@ export async function importScoresFromCsv(
   let rowsImported = 0
   for (const [name, entries] of result.entriesBySeries) {
     const roundFormat = result.roundFormatBySeries.get(name) ?? '?'
-    rowsImported += await persistSeries(db, name, roundFormat, entries)
+    // Atomic per series: a mid-import failure leaves no partially-written
+    // series live in the rankings.
+    rowsImported += await db.$transaction(
+      (tx) => persistSeries(tx, name, roundFormat, entries),
+      { timeout: 120_000, maxWait: 10_000 },
+    )
     seriesImported++
   }
 

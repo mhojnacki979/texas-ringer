@@ -120,4 +120,79 @@ describe('rankSegment — ordering and tiebreakers', () => {
     expect(prov?.ranked).toBe(false)
     expect(prov?.rank).toBeNull()
   })
+
+  it('breaks a tie on the second-highest score when highest singles are equal', () => {
+    // Same total 870, same high 300. A's 2nd is 290; B's 2nd is 285.
+    const ranked = rankSegment([
+      archer('B', 'B', [score('1', 300), score('2', 285), score('3', 285)]),
+      archer('A', 'A', [score('1', 300), score('2', 290), score('3', 280)]),
+    ])
+    expect(ranked.map((r) => r.usaArcheryNo)).toEqual(['A', 'B'])
+  })
+
+  it('breaks a deeper tie by most recent counted event, more recent ranking ahead', () => {
+    // Identical totals, counted values, and (absent) arrow data — only dates differ.
+    const ranked = rankSegment([
+      archer('OLD', 'Old', [
+        score('1', 100, '2026-01-01'),
+        score('2', 100, '2026-01-02'),
+        score('3', 100, '2026-01-03'),
+      ]),
+      archer('NEW', 'New', [
+        score('1', 100, '2026-01-01'),
+        score('2', 100, '2026-01-02'),
+        score('3', 100, '2026-02-01'),
+      ]),
+    ])
+    expect(ranked.map((r) => r.usaArcheryNo)).toEqual(['NEW', 'OLD'])
+  })
+
+  it('falls back to usaArcheryNo for fully tied archers, independent of input order', () => {
+    const a = archer('A2', 'Two', [score('1', 100), score('2', 100), score('3', 100)])
+    const b = archer('A1', 'One', [score('1', 100), score('2', 100), score('3', 100)])
+    expect(rankSegment([a, b]).map((r) => r.usaArcheryNo)).toEqual(['A1', 'A2'])
+    expect(rankSegment([b, a]).map((r) => r.usaArcheryNo)).toEqual(['A1', 'A2'])
+  })
+
+  it('counts the earlier-dated score when a counted and dropped score tie', () => {
+    // 295, 290 (early), 290 (late), plus a 288. Best 3 = 295 + two 290s... no:
+    // best 3 = 295, 290, 290 — the 288 drops. With scores 295, 290, 288, 290:
+    const r = computeArcherRanking(
+      archer('T', 'Tie', [
+        score('E1', 295, '2026-01-01'),
+        score('E2', 290, '2026-01-08'),
+        score('E3', 288, '2026-01-15'),
+        score('E4', 290, '2026-01-22'),
+      ]),
+    )
+    // Best 3 total counts both 290s and drops the 288 regardless of date.
+    expect(r.best3Total).toBe(875)
+    expect(r.dropped.map((s) => s.total)).toEqual([288])
+    // Within equal values, the earlier-dated event sorts first among counted.
+    const twoNineties = r.counted.filter((s) => s.total === 290).map((s) => s.eventId)
+    expect(twoNineties).toEqual(['E2', 'E4'])
+  })
+
+  it('rounds the best-3 average to 2 decimals when division is inexact', () => {
+    const r = computeArcherRanking(
+      archer('AVG', 'Avg', [score('1', 290), score('2', 289), score('3', 289)]), // 868 / 3
+    )
+    expect(r.best3Average).toBe(289.33)
+  })
+
+  it('handles an archer with zero scores without crashing', () => {
+    const r = computeArcherRanking(archer('Z', 'Zero', []))
+    expect(r.best3Total).toBe(0)
+    expect(r.best3Average).toBeNull()
+    expect(r.ranked).toBe(false)
+    expect(r.eventsShot).toBe(0)
+  })
+
+  it('orders tied provisional archers deterministically by usaArcheryNo', () => {
+    const p1 = archer('P2', 'Late', [score('1', 250)])
+    const p2 = archer('P1', 'Early', [score('1', 250)])
+    expect(
+      rankSegment([p1, p2]).map((r) => r.usaArcheryNo),
+    ).toEqual(['P1', 'P2'])
+  })
 })

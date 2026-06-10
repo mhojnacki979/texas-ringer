@@ -30,4 +30,9 @@ describe('session tokens', () => {
     expect(verifySessionToken('garbage', SECRET)).toBe(false)
     expect(verifySessionToken('123.abc', '')).toBe(false)
   })
+
+  it('rejects a valid token with trailing segments appended', () => {
+    const token = createSessionToken(SECRET, 1_000_000)
+    expect(verifySessionToken(`${token}.junk`, SECRET, 1_000_000)).toBe(false)
+  })
 })

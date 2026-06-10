@@ -6,7 +6,7 @@
  * Auth: `Authorization: Bearer <ADMIN_TOKEN>`.
  */
 import { NextRequest, NextResponse } from 'next/server'
-import { ADMIN_SESSION_COOKIE, safeEqual, verifySessionToken } from '@/auth/session'
+import { safeEqual, sessionCookieName, verifySessionToken } from '@/auth/session'
 import { importScoresFromCsv } from '@/db/import-scores'
 
 export const dynamic = 'force-dynamic'
@@ -21,7 +21,12 @@ function isAuthorized(request: NextRequest): boolean {
   const provided = header.startsWith('Bearer ') ? header.slice(7) : ''
   if (expected !== '' && safeEqual(provided, expected)) return true
 
-  const session = request.cookies.get(ADMIN_SESSION_COOKIE)?.value ?? ''
+  // Cookie path: refuse cross-site browser requests (defense-in-depth on top
+  // of sameSite=lax). Bearer requests above are unaffected.
+  const site = request.headers.get('sec-fetch-site')
+  if (site !== null && site !== 'same-origin' && site !== 'none') return false
+
+  const session = request.cookies.get(sessionCookieName())?.value ?? ''
   return verifySessionToken(session, process.env.SESSION_SECRET ?? '')
 }
 
@@ -37,7 +42,8 @@ async function readCsvBody(request: NextRequest): Promise<string | null> {
     return file.text()
   }
   const text = await request.text()
-  if (text.length > MAX_CSV_BYTES) return null
+  // Byte-accurate: .length counts UTF-16 code units, not UTF-8 bytes.
+  if (Buffer.byteLength(text, 'utf8') > MAX_CSV_BYTES) return null
   return text
 }
 

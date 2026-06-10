@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { rankSeries, segmentKey } from './engine'
+import { rankSeries, segmentBucketKey } from './engine'
 import type { ArcherEntry, EventScore } from './types'
 
 function s(total: number, eventId: string): EventScore {
@@ -23,12 +23,26 @@ describe('rankSeries', () => {
       entry('C', 'Recurve', 'Female', 'Cub', [200, 201, 202]),
     ])
 
-    const cms = result.get(segmentKey({ division: 'Compound', gender: 'Male', ageClass: 'Senior' }))!
+    const cms = result.get(
+      segmentBucketKey({ division: 'Compound', gender: 'Male', ageClass: 'Senior' }),
+    )!
     expect(cms.map((r) => r.usaArcheryNo)).toEqual(['A', 'B'])
     expect(cms[0]!.rank).toBe(1)
 
-    const rfc = result.get(segmentKey({ division: 'Recurve', gender: 'Female', ageClass: 'Cub' }))!
+    const rfc = result.get(
+      segmentBucketKey({ division: 'Recurve', gender: 'Female', ageClass: 'Cub' }),
+    )!
     expect(rfc).toHaveLength(1)
     expect(rfc[0]!.usaArcheryNo).toBe('C')
+  })
+
+  it('does not merge segments whose field values contain the display delimiter', () => {
+    const result = rankSeries([
+      entry('X', 'A / B', 'C', 'Senior', [100, 100, 100]),
+      entry('Y', 'A', 'B / C', 'Senior', [200, 200, 200]),
+    ])
+    expect(result.size).toBe(2)
+    const first = result.get(segmentBucketKey({ division: 'A / B', gender: 'C', ageClass: 'Senior' }))!
+    expect(first.map((r) => r.usaArcheryNo)).toEqual(['X'])
   })
 })

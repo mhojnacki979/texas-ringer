@@ -38,6 +38,17 @@ EyesonScore into "best 3 of N" series rankings.
        then HostGator: CNAME www -> Railway target + 301 redirect apex -> www
 - [ ] 9. LATER: auto-pull / webhooks from EyesonScore behind the same import boundary
 
+## Audit fixes (swarm audit 2026-06-09) — fix all
+- [ ] A. CSV parser: BOM strip, CR-only row endings, unterminated-quote + trailing-after-quote diagnostics
+- [ ] B. Schema: strict total_score (no empty->0), real calendar dates, usa_archery_no normalization (zero-width strip + uppercase)
+- [ ] C. Import: duplicate headers, slug collisions, conflicting event metadata, all Zod issues per row, arrows 0-12 + must sum to total, total capped by numeric round_format
+- [ ] D. DB: wrap each series import in a transaction
+- [ ] E. Engine: structural segment bucketing (no delimiter collision), deterministic final tiebreak (usa no), tests for recent-event direction / 2nd-3rd tiebreaks / boundary ties / avg rounding / empty scores
+- [ ] F. Auth: login rate limit + failure delay, login body cap, sec-fetch-site guard on cookie paths, double-HMAC safeEqual, strict token parse, __Host- cookie prefix in prod
+- [ ] G. Routes: byte-accurate 2MB cap, /api/health (no DB)
+- [ ] H. Deploy: healthcheck -> /api/health, packageManager + node 20.x pins + .nvmrc, boot-time env assertion, remove 2 empty migration dirs (+ prod migration-table cleanup), README de-SQLite
+- [ ] I. Full validation + deploy + prod smoke
+
 ## Production notes
 - Prod secrets: PROD_ADMIN_PASSWORD / PROD_ADMIN_TOKEN stored in local .env (rotated
   after a CLI echo leak; the leaked values are dead)

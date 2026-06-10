@@ -47,7 +47,7 @@ describe('importCsv — happy path', () => {
   })
 
   it('parses the arrows column into per-arrow integers', () => {
-    const csv = [HEADER, row({ arrows: '10 9 9 7' })].join('\n')
+    const csv = [HEADER, row({ arrows: '10 9 9 7', total_score: '35' })].join('\n')
     const entries = importCsv(csv).entriesBySeries.get('Spring 2026')!
     expect(entries[0]!.scores[0]!.arrows).toEqual([10, 9, 9, 7])
   })
@@ -101,5 +101,85 @@ describe('importCsv — validation', () => {
     ].join('\n')
     const result = importCsv(csv)
     expect(result.errors.some((e) => /duplicate/i.test(e.message))).toBe(true)
+  })
+
+  it('rejects an empty total_score instead of importing it as 0', () => {
+    const csv = [HEADER, row({ total_score: '' })].join('\n')
+    const result = importCsv(csv)
+    expect(result.rowCount).toBe(0)
+    expect(result.errors.some((e) => /total_score/.test(e.message))).toBe(true)
+  })
+
+  it('rejects an impossible calendar date', () => {
+    const csv = [HEADER, row({ event_date: '2026-13-99' })].join('\n')
+    expect(importCsv(csv).errors.some((e) => /calendar/.test(e.message))).toBe(true)
+  })
+
+  it('rejects a total above a numeric round format maximum', () => {
+    const csv = [HEADER, row({ total_score: '301', round_format: '300' })].join('\n')
+    expect(importCsv(csv).errors.some((e) => /maximum/.test(e.message))).toBe(true)
+  })
+
+  it('rejects arrows out of range and arrows that do not sum to the total', () => {
+    const outOfRange = [HEADER, row({ arrows: '13 9', total_score: '22' })].join('\n')
+    expect(importCsv(outOfRange).errors.some((e) => /between 0 and/.test(e.message))).toBe(true)
+
+    const badSum = [HEADER, row({ arrows: '10 9', total_score: '290' })].join('\n')
+    expect(importCsv(badSum).errors.some((e) => /must match/.test(e.message))).toBe(true)
+  })
+
+  it('normalizes usa_archery_no case and zero-width characters into one archer', () => {
+    const csv = [
+      HEADER,
+      row({ usa_archery_no: 'usa100', event_id: 'E1' }),
+      row({ usa_archery_no: 'USA​100', event_id: 'E2' }),
+    ].join('\n')
+    const entries = importCsv(csv).entriesBySeries.get('Spring 2026')!
+    expect(entries).toHaveLength(1)
+    expect(entries[0]!.usaArcheryNo).toBe('USA100')
+    expect(entries[0]!.scores).toHaveLength(2)
+  })
+
+  it('flags duplicate header columns', () => {
+    const csv = [`${HEADER},total_score`, `${row({})},999`].join('\n')
+    expect(importCsv(csv).errors.some((e) => /duplicate header/.test(e.message))).toBe(true)
+  })
+
+  it('flags two series names that collide on the same URL slug', () => {
+    const csv = [
+      HEADER,
+      row({ series: 'Spring 2026', event_id: 'E1' }),
+      row({ series: 'Spring  2026!', event_id: 'E1', usa_archery_no: 'USA200' }),
+    ].join('\n')
+    expect(importCsv(csv).errors.some((e) => /collides/.test(e.message))).toBe(true)
+  })
+
+  it('flags conflicting event metadata for the same event_id', () => {
+    const csv = [
+      HEADER,
+      row({ event_id: 'E1', event_name: 'Indoor Open', usa_archery_no: 'USA100' }),
+      row({ event_id: 'E1', event_name: 'Different Name', usa_archery_no: 'USA200' }),
+    ].join('\n')
+    expect(importCsv(csv).errors.some((e) => /conflicting/.test(e.message))).toBe(true)
+  })
+
+  it('surfaces parser diagnostics as file-level errors', () => {
+    const csv = [HEADER, `${row({})}`, '"unterminated'].join('\n')
+    const result = importCsv(csv)
+    expect(result.errors.some((e) => e.line === 0 && /unterminated/.test(e.message))).toBe(true)
+  })
+
+  it('imports CR-only files instead of silently reading zero rows', () => {
+    const csv = [HEADER, row({})].join('\r')
+    const result = importCsv(csv)
+    expect(result.rowCount).toBe(1)
+    expect(result.errors).toEqual([])
+  })
+
+  it('reports all validation problems on a row, not just the first', () => {
+    const csv = [HEADER, row({ total_score: '', event_date: 'bad' })].join('\n')
+    const result = importCsv(csv)
+    expect(result.errors[0]!.message).toMatch(/total_score/)
+    expect(result.errors[0]!.message).toMatch(/event_date/)
   })
 })

@@ -16,9 +16,18 @@ import {
   type Segment,
 } from './types'
 
-/** Stable, human-readable key for a segment leaderboard. */
+/** Human-readable label for a segment leaderboard (display only). */
 export function segmentKey(s: Segment): string {
   return `${s.division} / ${s.gender} / ${s.ageClass}`
+}
+
+/**
+ * Structural identity key for a segment. Unlike segmentKey, this cannot
+ * collide when field values themselves contain the display delimiter
+ * (e.g. division "A / B" + gender "C" vs division "A" + gender "B / C").
+ */
+export function segmentBucketKey(s: Segment): string {
+  return JSON.stringify([s.division, s.gender, s.ageClass])
 }
 
 /** Count arrows worth exactly 7 across a set of scores (for the "most 7s" tiebreaker). */
@@ -36,8 +45,11 @@ function latestEventDate(scores: EventScore[]): string {
 
 /**
  * Split an archer's scores into counted (best 3) and dropped (the rest).
- * Ties at the boundary are broken by earlier event date for determinism, which
- * never affects the total since tied scores are equal.
+ * Ties at the counted/dropped boundary are broken by earlier event date. The
+ * total is unaffected (tied scores are equal), but the choice IS rank-relevant
+ * downstream: it decides which arrows feed the most-7s tiebreaker and which
+ * date feeds the recency tiebreaker. Earlier-date-wins reproduces the spec's
+ * sequential "a new score only replaces the lowest counted if HIGHER" rule.
  */
 function selectCounted(scores: EventScore[]): { counted: EventScore[]; dropped: EventScore[] } {
   const ordered = [...scores].sort((a, b) => b.total - a.total || a.eventDate.localeCompare(b.eventDate))
@@ -93,8 +105,12 @@ function compareRanked(a: ArcherRanking, b: ArcherRanking): number {
   const bSevens = countSevens(b.counted)
   if (aSevens !== bSevens) return bSevens - aSevens
 
-  // Most recent event score ranks ahead.
-  return latestEventDate(b.counted).localeCompare(latestEventDate(a.counted))
+  // Most recent counted event ranks ahead.
+  const byDate = latestEventDate(b.counted).localeCompare(latestEventDate(a.counted))
+  if (byDate !== 0) return byDate
+
+  // Deterministic last resort so fully tied archers never depend on input order.
+  return a.usaArcheryNo.localeCompare(b.usaArcheryNo)
 }
 
 /**
@@ -114,19 +130,22 @@ export function rankSegment(entries: ArcherEntry[]): ArcherRanking[] {
 
   const provisional = computed
     .filter((r) => !r.ranked)
-    .sort((a, b) => b.best3Total - a.best3Total)
+    .sort(
+      (a, b) => b.best3Total - a.best3Total || a.usaArcheryNo.localeCompare(b.usaArcheryNo),
+    )
 
   return [...ranked, ...provisional]
 }
 
 /**
  * Rank a whole series: bucket archer entries into their segment leaderboards
- * (division x gender x age) and rank each independently. Keyed by segmentKey.
+ * (division x gender x age) and rank each independently. Keyed by
+ * segmentBucketKey (structural — display labels come from the segment itself).
  */
 export function rankSeries(entries: ArcherEntry[]): Map<string, ArcherRanking[]> {
   const bySegment = new Map<string, ArcherEntry[]>()
   for (const entry of entries) {
-    const key = segmentKey(entry.segment)
+    const key = segmentBucketKey(entry.segment)
     const bucket = bySegment.get(key)
     if (bucket === undefined) bySegment.set(key, [entry])
     else bucket.push(entry)
