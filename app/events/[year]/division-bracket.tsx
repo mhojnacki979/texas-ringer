@@ -1,74 +1,56 @@
-import type { EventDivision } from '@/data/events'
-import { roundLabel } from '@/data/events'
+import type { BracketMatch, BracketShooter, EventDivision } from '@/data/events'
 
 /**
- * Progression bracket for a shoot-off division. The Texas Ringer eliminations
- * are a shoot-DOWN (the field narrows 16 -> 8 -> 4 -> finals), not head-to-head
- * pairings — so this renders one column per round, archers as cards, with those
- * who advanced to the next round highlighted and flowing toward the champion.
+ * True single-elimination bracket. Each round is a column of head-to-head
+ * matches (the EOS pairing tree); winners are highlighted and flow rightward
+ * to the champion. Matches space out per column so each aligns with the merge
+ * point of the next round, the classic bracket shape.
  */
 
-interface BracketCard {
-  rank: number
-  name: string
-  score: number
-  advanced: boolean
-  isChampion: boolean
-}
-
-function buildColumns(division: EventDivision): { label: string; count: number; cards: BracketCard[] }[] {
-  const total = division.eliminationRounds.length
-  return division.eliminationRounds.map((round, i) => {
-    const nextNames = new Set(
-      (division.eliminationRounds[i + 1]?.results ?? []).map((r) => r.name),
+function ShooterRow({ shooter }: { shooter: BracketShooter | null }) {
+  if (shooter === null) {
+    return (
+      <div className="match-row is-bye">
+        <span className="match-seed" />
+        <span className="match-name muted">Bye</span>
+      </div>
     )
-    const isFinal = i === total - 1
-    const cards: BracketCard[] = [...round.results]
-      .sort((a, b) => a.rank - b.rank)
-      .map((r) => ({
-        rank: r.rank,
-        name: r.name,
-        score: r.score,
-        advanced: nextNames.has(r.name),
-        isChampion: isFinal && r.name === division.champion,
-      }))
-    return { label: roundLabel(i, total), count: round.results.length, cards }
-  })
+  }
+  return (
+    <div className={`match-row${shooter.winner ? ' is-winner' : ''}`}>
+      <span className="match-seed">{shooter.seed}</span>
+      <span className="match-name">{shooter.name}</span>
+      <span className="match-score">{shooter.score}</span>
+    </div>
+  )
 }
 
-function Card({ card }: { card: BracketCard }) {
-  const cls = card.isChampion
-    ? 'bracket-card is-champion'
-    : card.advanced
-      ? 'bracket-card is-advanced'
-      : 'bracket-card'
+function Match({ match }: { match: BracketMatch }) {
   return (
-    <div className={cls}>
-      <span className="bracket-seed">{card.rank}</span>
-      <span className="bracket-card-name">{card.name}</span>
-      <span className="bracket-card-score">{card.score}</span>
+    <div className="match">
+      <ShooterRow shooter={match.a} />
+      <ShooterRow shooter={match.b} />
     </div>
   )
 }
 
 export function DivisionBracket({ division }: { division: EventDivision }) {
-  const columns = buildColumns(division)
-  if (columns.length === 0) {
-    return <p className="muted">No shoot-off rounds recorded for this division.</p>
+  const rounds = division.bracket?.rounds ?? []
+  if (rounds.length === 0) {
+    return <p className="muted">No bracket recorded for this division.</p>
   }
 
   return (
     <div className="bracket-scroll">
       <div className="bracket-grid">
-        {columns.map((col, i) => (
-          <div className="bracket-col" key={`${col.label}-${i}`}>
+        {rounds.map((round, i) => (
+          <div className="bracket-col" key={`${round.name}-${i}`}>
             <div className="bracket-col-head">
-              <span className="bracket-col-name">{col.label}</span>
-              <span className="bracket-col-count">{col.count}</span>
+              <span className="bracket-col-name">{round.name}</span>
             </div>
-            <div className="bracket-col-cards">
-              {col.cards.map((c) => (
-                <Card card={c} key={`${c.rank}-${c.name}`} />
+            <div className="bracket-col-matches">
+              {round.matches.map((m, j) => (
+                <Match match={m} key={`${m.a.name}-${m.b?.name ?? 'bye'}-${j}`} />
               ))}
             </div>
           </div>
@@ -78,10 +60,8 @@ export function DivisionBracket({ division }: { division: EventDivision }) {
             <div className="bracket-col-head">
               <span className="bracket-col-name is-gold">Champion</span>
             </div>
-            <div className="bracket-col-cards">
-              <div className="bracket-card is-champion bracket-champion-final">
-                <span className="bracket-card-name">{division.champion}</span>
-              </div>
+            <div className="bracket-col-matches">
+              <div className="champion-chip">{division.champion}</div>
             </div>
           </div>
         )}

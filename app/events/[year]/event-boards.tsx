@@ -1,33 +1,10 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import type { EventDivision } from '@/data/events'
-import { roundLabel } from '@/data/events'
 import { DivisionBracket } from './division-bracket'
 
-/** Tabs across a division: Qualification, then each shoot-off round. */
-interface RoundTab {
-  key: string
-  label: string
-  kind: 'qualification' | 'elimination'
-  roundIndex: number
-}
-
-function buildTabs(division: EventDivision): RoundTab[] {
-  const tabs: RoundTab[] = [
-    { key: 'qual', label: 'Qualification', kind: 'qualification', roundIndex: -1 },
-  ]
-  const total = division.eliminationRounds.length
-  division.eliminationRounds.forEach((_, i) => {
-    tabs.push({
-      key: `r${i}`,
-      label: roundLabel(i, total),
-      kind: 'elimination',
-      roundIndex: i,
-    })
-  })
-  return tabs
-}
+type ViewMode = 'bracket' | 'qualification'
 
 function QualTable({ division }: { division: EventDivision }) {
   return (
@@ -35,7 +12,7 @@ function QualTable({ division }: { division: EventDivision }) {
       <table className="board-table">
         <thead>
           <tr>
-            <th>Rank</th>
+            <th>Seed</th>
             <th>Archer</th>
             <th className="cell-num">Arrow Avg</th>
             <th className="cell-num">Score</th>
@@ -64,67 +41,17 @@ function QualTable({ division }: { division: EventDivision }) {
   )
 }
 
-function ElimTable({ division, roundIndex }: { division: EventDivision; roundIndex: number }) {
-  const round = division.eliminationRounds[roundIndex]
-  if (round === undefined) return null
-  const endCount = round.results[0]?.ends.length ?? 0
-  return (
-    <div className="table-wrap">
-      <table className="board-table">
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Archer</th>
-            {Array.from({ length: endCount }, (_, i) => (
-              <th key={i} className="cell-num">{`End ${i + 1}`}</th>
-            ))}
-            <th className="cell-num">Total</th>
-            <th>Result</th>
-          </tr>
-        </thead>
-        <tbody>
-          {round.results.map((r) => (
-            <tr key={`${r.rank}-${r.name}`} className={r.winner ? 'is-winner-row' : ''}>
-              <td className="mono">{r.rank}</td>
-              <td className="archer-name">{r.name}</td>
-              {r.ends.map((e, i) => (
-                <td key={i} className="cell-num mono">
-                  {e}
-                </td>
-              ))}
-              <td className="cell-num">
-                <span className="score-total">{r.score}</span>
-              </td>
-              <td>{r.winner ? <span className="badge badge-counted">Advanced</span> : ''}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  )
-}
-
-type ViewMode = 'bracket' | 'rounds'
-
 export function EventBoards({ divisions }: { divisions: EventDivision[] }) {
   const [activeName, setActiveName] = useState(divisions[0]?.name ?? '')
   const active = divisions.find((d) => d.name === activeName) ?? divisions[0]
   const [view, setView] = useState<ViewMode>('bracket')
-  const tabs = useMemo(() => (active ? buildTabs(active) : []), [active])
-  // Default to the Finals tab — the result everyone wants first.
-  const [activeTab, setActiveTab] = useState('')
-  const currentTab = tabs.find((t) => t.key === activeTab) ?? tabs[tabs.length - 1] ?? tabs[0]
 
-  if (active === undefined || currentTab === undefined) {
+  if (active === undefined) {
     return <p className="muted">No results recorded for this event.</p>
   }
 
-  function onDivisionChange(name: string) {
-    setActiveName(name)
-    setActiveTab('') // reset to Finals for the newly selected division
-  }
-
-  const hasBracket = active.eliminationRounds.length > 0
+  const hasBracket = active.bracket !== null && active.bracket.rounds.length > 0
+  const showBracket = view === 'bracket' && hasBracket
 
   return (
     <section aria-label="Event results">
@@ -134,7 +61,7 @@ export function EventBoards({ divisions }: { divisions: EventDivision[] }) {
           <select
             className="segment-select"
             value={active.name}
-            onChange={(e) => onDivisionChange(e.target.value)}
+            onChange={(e) => setActiveName(e.target.value)}
             aria-label="Choose a division"
           >
             {divisions.map((d) => (
@@ -159,11 +86,11 @@ export function EventBoards({ divisions }: { divisions: EventDivision[] }) {
             <button
               type="button"
               role="tab"
-              aria-selected={view === 'rounds'}
+              aria-selected={view === 'qualification'}
               className="view-toggle-btn"
-              onClick={() => setView('rounds')}
+              onClick={() => setView('qualification')}
             >
-              Rounds
+              Qualification
             </button>
           </div>
         )}
@@ -176,31 +103,7 @@ export function EventBoards({ divisions }: { divisions: EventDivision[] }) {
         </div>
       )}
 
-      {view === 'bracket' && hasBracket ? (
-        <DivisionBracket division={active} />
-      ) : (
-        <>
-          <div className="round-tabs" role="tablist" aria-label="Rounds">
-            {tabs.map((t) => (
-              <button
-                key={t.key}
-                type="button"
-                role="tab"
-                aria-selected={t.key === currentTab.key}
-                className="round-tab"
-                onClick={() => setActiveTab(t.key)}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
-          {currentTab.kind === 'qualification' ? (
-            <QualTable division={active} />
-          ) : (
-            <ElimTable division={active} roundIndex={currentTab.roundIndex} />
-          )}
-        </>
-      )}
+      {showBracket ? <DivisionBracket division={active} /> : <QualTable division={active} />}
     </section>
   )
 }

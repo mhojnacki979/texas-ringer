@@ -795,7 +795,7 @@ a.button:hover {
   color: #fff;
 }
 
-/* ---------- Progression bracket ---------- */
+/* ---------- Single-elimination bracket ---------- */
 
 .bracket-scroll {
   overflow-x: auto;
@@ -811,27 +811,17 @@ a.button:hover {
 .bracket-col {
   display: flex;
   flex-direction: column;
-  min-width: 178px;
-  padding: 0 0.6rem;
-  border-left: 1px solid var(--border);
+  min-width: 198px;
+  padding: 0 0.7rem;
 }
 
 .bracket-col:first-child {
-  border-left: none;
   padding-left: 0;
 }
 
-.bracket-col-champion {
-  justify-content: flex-start;
-}
-
 .bracket-col-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.4rem;
   padding: 0 0.2rem 0.6rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.4rem;
   border-bottom: 2px solid var(--border-strong);
 }
 
@@ -848,83 +838,99 @@ a.button:hover {
   color: var(--gold);
 }
 
-.bracket-col-count {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-}
-
-.bracket-col-cards {
+/* Matches space evenly so each centres on the next round's merge point. */
+.bracket-col-matches {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  justify-content: space-around;
+  flex: 1;
+  gap: 0.5rem;
 }
 
-.bracket-card {
+.match {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.match-row {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 0.5rem 0.6rem;
+  padding: 0.45rem 0.6rem;
 }
 
-.bracket-card.is-advanced {
-  border-color: var(--red-border);
+.match-row.is-winner {
   background: var(--surface-raised);
 }
 
-.bracket-card.is-champion {
-  border-color: var(--gold);
-  background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+.match-row.is-winner .match-name {
+  color: #fff;
+  font-weight: 700;
 }
 
-.bracket-seed {
+.match-row.is-winner .match-seed {
+  color: var(--red);
+}
+
+.match-row.is-winner .match-score {
+  color: var(--gold);
+}
+
+.match-row.is-bye {
+  opacity: 0.5;
+}
+
+.match-seed {
   flex: none;
-  width: 1.4rem;
+  width: 1.3rem;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
   text-align: center;
 }
 
-.is-advanced .bracket-seed {
-  color: var(--red);
-}
-
-.bracket-card-name {
+.match-name {
   flex: 1;
   min-width: 0;
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.bracket-card-score {
+.match-score {
   flex: none;
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   color: var(--text);
 }
 
-.bracket-champion-final {
-  margin-top: 0.1rem;
-  padding: 0.9rem 0.8rem;
+.bracket-col-champion .bracket-col-matches {
   justify-content: center;
 }
 
-.bracket-champion-final .bracket-card-name {
-  flex: initial;
+.champion-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 1.05rem;
   color: #fff;
-  white-space: normal;
+  background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 0.8rem;
 }
 
 /* ---------- Leaderboard table ---------- */

@@ -1,6 +1,9 @@
 /**
- * Annual-event results (historical EOS exports, parsed to JSON in
- * src/data/events/). Static data — no database involved.
+ * Annual-event results, synced from the Eyes on Score API into JSON in
+ * src/data/events/ (see scripts/sync-events.ts). Static data — no database.
+ *
+ * Brackets are the authoritative single-elimination pairing trees from EOS
+ * (tournament_group_bracket_layout): seeds, head-to-head matches, real winners.
  */
 import event2024 from './events/2024.json'
 import event2025 from './events/2025.json'
@@ -12,24 +15,33 @@ export interface EventQualRow {
   score: number
 }
 
-export interface EventElimRow {
-  rank: number
+/** One archer's side of a head-to-head match. */
+export interface BracketShooter {
   name: string
-  ends: number[]
+  seed: number
   score: number
   winner: boolean
 }
 
-export interface EventElimRound {
-  round: number
-  results: EventElimRow[]
+export interface BracketMatch {
+  a: BracketShooter
+  b: BracketShooter | null
+}
+
+export interface BracketRound {
+  name: string
+  matches: BracketMatch[]
+}
+
+export interface EventBracket {
+  rounds: BracketRound[]
 }
 
 export interface EventDivision {
   name: string
-  qualification: EventQualRow[]
-  eliminationRounds: EventElimRound[]
   champion: string | null
+  qualification: EventQualRow[]
+  bracket: EventBracket | null
 }
 
 export interface AnnualEvent {
@@ -49,23 +61,4 @@ export function listEvents(): AnnualEvent[] {
 
 export function getEvent(year: number): AnnualEvent | null {
   return EVENTS.find((e) => e.year === year) ?? null
-}
-
-/** Standard archery elimination round names, counting back from the final. */
-const ROUND_NAMES_FROM_FINAL = [
-  'Finals',
-  'Semi Finals',
-  'Quarter Finals',
-  '1/8th Round',
-  '1/16th Round',
-] as const
-
-/**
- * Label a shoot-off round by its position from the final. The last round is
- * always "Finals", the prior is "Semi Finals", etc. — matching how Eyes on
- * Score names the rounds, regardless of how many an undersized field needed.
- */
-export function roundLabel(roundIndex: number, totalRounds: number): string {
-  const fromEnd = totalRounds - 1 - roundIndex
-  return ROUND_NAMES_FROM_FINAL[fromEnd] ?? `Round ${roundIndex + 1}`
 }

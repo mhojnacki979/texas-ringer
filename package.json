@@ -17,6 +17,7 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "standings": "tsx scripts/import-csv.ts",
+    "sync:events": "node --env-file=.env --import tsx scripts/sync-events.ts",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
