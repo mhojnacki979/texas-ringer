@@ -196,22 +196,35 @@ export function SegmentBoards({ seriesSlug, series, boards }: SegmentBoardsProps
     return <p className="muted">No standings recorded for this series yet.</p>
   }
 
+  // One dropdown, grouped by division: 24 segments without a wall of buttons.
+  const byDivision = new Map<string, SegmentBoard[]>()
+  for (const b of boards) {
+    const group = byDivision.get(b.segment.division)
+    if (group === undefined) byDivision.set(b.segment.division, [b])
+    else group.push(b)
+  }
+
   return (
     <section aria-label="Segment leaderboards">
-      <div className="segment-tabs" role="tablist" aria-label="Segments">
-        {boards.map((b) => (
-          <button
-            key={b.key}
-            type="button"
-            role="tab"
-            aria-selected={b.key === active.key}
-            className="segment-pill"
-            onClick={() => setActiveKey(b.key)}
-          >
-            {segmentLabel(b)}
-          </button>
-        ))}
-      </div>
+      <label className="segment-picker">
+        <span className="segment-picker-label">Leaderboard</span>
+        <select
+          className="segment-select"
+          value={active.key}
+          onChange={(e) => setActiveKey(e.target.value)}
+          aria-label="Choose a segment leaderboard"
+        >
+          {[...byDivision.entries()].map(([division, group]) => (
+            <optgroup key={division} label={division}>
+              {group.map((b) => (
+                <option key={b.key} value={b.key}>
+                  {b.segment.gender} · {b.segment.ageClass}
+                </option>
+              ))}
+            </optgroup>
+          ))}
+        </select>
+      </label>
       <MetricStrip series={series} board={active} />
       <LeaderCard seriesSlug={seriesSlug} board={active} />
       <BoardTable seriesSlug={seriesSlug} board={active} />
