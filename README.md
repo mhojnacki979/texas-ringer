@@ -13,8 +13,9 @@ if they beat the current lowest counted score. Leaderboards are segmented by
 
 - ✅ Ranking engine (best-3, tiebreakers, provisional handling) — fully tested
 - ✅ CSV import (parse + validate + group + rank) — fully tested
-- ✅ CLI to import a CSV and print standings
-- ⏳ Persistence (Prisma + Postgres), public web UI, auto-pull from Eyes on Score
+- ✅ Persistence — Prisma + SQLite (Postgres-compatible schema), idempotent CSV import
+- ✅ Public web UI — Next.js 15: series index, segmented leaderboards, archer detail
+- ⏳ Web-based CSV upload (CLI works today), Railway deploy, auto-pull from Eyes on Score
 
 Data is imported manually via CSV for now. Automated pull/webhooks from Eyes on
 Score will plug in behind the same import boundary later.
@@ -23,8 +24,13 @@ Score will plug in behind the same import boundary later.
 
 ```bash
 pnpm install
+pnpm db:generate                # generate the Prisma client
+pnpm db:migrate                 # create/update the local SQLite db
+pnpm db:import <path-to.csv>    # import scores into the database (idempotent)
+pnpm dev                        # run the site at http://localhost:3000
+
 pnpm test                       # run the suite
-pnpm standings <path-to.csv>    # import a CSV and print standings
+pnpm standings <path-to.csv>    # offline: rank a CSV and print standings (no db)
 pnpm standings examples/sample-series.csv
 ```
 

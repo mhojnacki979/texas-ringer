@@ -1,0 +1,65 @@
+// Persistence schema for series rankings.
+//
+// Dev/local uses SQLite. Production will switch the provider to "postgresql"
+// on Railway — keep this schema Postgres-compatible (no SQLite-only types,
+// portable column types only). Event dates are stored as ISO YYYY-MM-DD
+// strings for the same reason: the ranking engine compares them lexically.
+//
+// No RankingSnapshot table: standings are computed on read by the pure
+// ranking engine (data volumes are tiny). Snapshots are a later optimization.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Series {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  roundFormat String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  events Event[]
+  scores Score[]
+}
+
+model Event {
+  id         String @id @default(cuid())
+  seriesId   String
+  /// The CSV event_id, unique within a series.
+  externalId String
+  name       String
+  /// ISO date (YYYY-MM-DD) stored as text for cross-database portability.
+  date       String
+
+  series Series  @relation(fields: [seriesId], references: [id], onDelete: Cascade)
+  scores Score[]
+
+  @@unique([seriesId, externalId])
+}
+
+model Score {
+  id           String @id @default(cuid())
+  seriesId     String
+  eventId      String
+  usaArcheryNo String
+  archerName   String
+  division     String
+  gender       String
+  ageClass     String
+  total        Int
+  /// Space-separated per-arrow values; empty string when not captured.
+  arrows       String
+
+  series Series @relation(fields: [seriesId], references: [id], onDelete: Cascade)
+  event  Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([eventId, usaArcheryNo, division, gender, ageClass])
+  @@index([seriesId])
+}

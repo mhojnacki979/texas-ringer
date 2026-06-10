@@ -22,12 +22,15 @@ EyesonScore into "best 3 of N" series rankings.
 ## Phases
 - [x] 1. Ranking engine (TDD) — pure functions, proven against doc example (867 -> 870, Event 5 drops)
 - [x] 2. Repo scaffold — pnpm + TS + Vitest config
-- [ ] 3. CSV import (TDD) — quote-aware parser + Zod row validation + group into ArcherEntry per segment
-- [ ] 4. rankSeries — split entries by segment, rank each; CLI to import a CSV and print standings
-- [ ] 5. Prisma schema — Series, SeriesEvent, ImportedScore, RankingSnapshot (persist imports + snapshots)
-- [ ] 6. Public UI — series index, leaderboard (segment switcher), archer detail
-- [ ] 7. Admin path — upload CSV, create series, assign events (seeded config ok to start)
-- [ ] 8. LATER: auto-pull / webhooks from EyesonScore behind the same import boundary
+- [x] 3. CSV import (TDD) — quote-aware parser + Zod row validation + group into ArcherEntry per segment
+- [x] 4. rankSeries — split entries by segment, rank each; CLI to import a CSV and print standings
+- [x] 5. Prisma persistence — SQLite (Postgres-compatible schema), Series/Event/Score models,
+       idempotent `pnpm db:import <csv>`, DB-backed data contract (standings computed on read;
+       RankingSnapshot deferred until data volume demands it)
+- [x] 6. Public UI — series index, leaderboard (segment switcher), archer detail, branded 404
+- [ ] 7. Admin path — upload CSV via web page (CLI works today), create/manage series
+- [ ] 8. Deploy — Railway (switch Prisma datasource to Postgres), series.eyesonscore.com DNS
+- [ ] 9. LATER: auto-pull / webhooks from EyesonScore behind the same import boundary
 
 ## CSV format (one row per archer per event)
 series, round_format, usa_archery_no, archer_name, division, gender, age_class,
