@@ -32,8 +32,17 @@ EyesonScore into "best 3 of N" series rankings.
        (Bearer ADMIN_TOKEN, multipart or raw text/csv — raw body is the future webhook entry)
 - [x] 7b. Admin login — /admin/login (ADMIN_PASSWORD) sets HMAC-signed httpOnly session
        cookie (SESSION_SECRET, 7-day TTL); /admin gated; footer Admin link; logout
-- [ ] 8. Deploy — Railway (switch Prisma datasource to Postgres), series.eyesonscore.com DNS
+- [x] 8. Deploy — Railway project "texas-ringer" (web + Postgres-TvgT), GitHub auto-deploy
+       from mhojnacki979/texas-ringer, live at https://web-production-1fe80.up.railway.app
+- [ ] 8b. Domain — add www.eyesonscore.biz in Railway dashboard (CLI token lacks scope),
+       then HostGator: CNAME www -> Railway target + 301 redirect apex -> www
 - [ ] 9. LATER: auto-pull / webhooks from EyesonScore behind the same import boundary
+
+## Production notes
+- Prod secrets: PROD_ADMIN_PASSWORD / PROD_ADMIN_TOKEN stored in local .env (rotated
+  after a CLI echo leak; the leaked values are dead)
+- Local dev + tests point DATABASE_URL/TEST_DATABASE_URL at the Railway Postgres
+  public URL; tests isolate via per-run schemas. Consider local docker postgres later.
 
 ## CSV format (one row per archer per event)
 series, round_format, usa_archery_no, archer_name, division, gender, age_class,
