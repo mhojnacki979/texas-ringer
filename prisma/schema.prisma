@@ -1,9 +1,8 @@
 // Persistence schema for series rankings.
 //
-// Dev/local uses SQLite. Production will switch the provider to "postgresql"
-// on Railway — keep this schema Postgres-compatible (no SQLite-only types,
-// portable column types only). Event dates are stored as ISO YYYY-MM-DD
-// strings for the same reason: the ranking engine compares them lexically.
+// Postgres on Railway (production and dev). Tests use TEST_DATABASE_URL with
+// an isolated schema per run. Event dates are stored as ISO YYYY-MM-DD
+// strings; the ranking engine compares them lexically.
 //
 // No RankingSnapshot table: standings are computed on read by the pure
 // ranking engine (data volumes are tiny). Snapshots are a later optimization.
@@ -13,7 +12,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 

@@ -2,14 +2,15 @@ import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { importScoresFromCsv } from './import-scores'
-import { createTestDb, type TestDb } from './test-db'
+import { createTestDb, hasTestDb, type TestDb } from './test-db'
 
 const sampleCsv = readFileSync(
   path.join(process.cwd(), 'examples', 'sample-series.csv'),
   'utf8',
 )
 
-describe('importScoresFromCsv', () => {
+// Runs only when TEST_DATABASE_URL (Postgres) is set; each run gets an isolated schema.
+describe.runIf(hasTestDb())('importScoresFromCsv', () => {
   let db: TestDb
 
   beforeAll(() => {

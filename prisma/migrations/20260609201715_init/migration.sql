@@ -1,26 +1,32 @@
+-- CreateSchema
+CREATE SCHEMA IF NOT EXISTS "public";
+
 -- CreateTable
 CREATE TABLE "Series" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "roundFormat" TEXT NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Series_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Event" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "seriesId" TEXT NOT NULL,
     "externalId" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "date" TEXT NOT NULL,
-    CONSTRAINT "Event_seriesId_fkey" FOREIGN KEY ("seriesId") REFERENCES "Series" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+
+    CONSTRAINT "Event_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Score" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "seriesId" TEXT NOT NULL,
     "eventId" TEXT NOT NULL,
     "usaArcheryNo" TEXT NOT NULL,
@@ -30,8 +36,8 @@ CREATE TABLE "Score" (
     "ageClass" TEXT NOT NULL,
     "total" INTEGER NOT NULL,
     "arrows" TEXT NOT NULL,
-    CONSTRAINT "Score_seriesId_fkey" FOREIGN KEY ("seriesId") REFERENCES "Series" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT "Score_eventId_fkey" FOREIGN KEY ("eventId") REFERENCES "Event" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+
+    CONSTRAINT "Score_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -45,3 +51,13 @@ CREATE INDEX "Score_seriesId_idx" ON "Score"("seriesId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Score_eventId_usaArcheryNo_division_gender_ageClass_key" ON "Score"("eventId", "usaArcheryNo", "division", "gender", "ageClass");
+
+-- AddForeignKey
+ALTER TABLE "Event" ADD CONSTRAINT "Event_seriesId_fkey" FOREIGN KEY ("seriesId") REFERENCES "Series"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Score" ADD CONSTRAINT "Score_seriesId_fkey" FOREIGN KEY ("seriesId") REFERENCES "Series"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Score" ADD CONSTRAINT "Score_eventId_fkey" FOREIGN KEY ("eventId") REFERENCES "Event"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
