@@ -3,11 +3,15 @@
 Standalone public leaderboard ("The Texas Ringer") that aggregates completed
 tournament scores from Eyes on Score into **best-3-of-N** series rankings.
 
-An archer needs at least **3 events** in a series to be officially ranked. Their
-ranking total is the sum of their **best 3 scores**; additional events only count
-if they beat the current lowest counted score. Leaderboards are segmented by
+An archer needs at least **3 rounds** in a series to place. Their ranking total
+is the sum of their **best 3 scores**; additional rounds only count if they beat
+the current lowest counted score. Leaderboards are segmented by
 **division × gender × age class**, and archers are matched across events by their
 **USA Archery number**.
+
+**The Texas Ringer round:** 60 arrows, each scoring **7 down to 1** (0 = miss),
+maximum possible total **420**. "Most 7s" — hits on the top ring — is a ranking
+tiebreaker, so per-arrow data matters.
 
 ## Status
 
@@ -54,7 +58,7 @@ One row per archer per event. Header required; column order does not matter.
 | Column | Required | Notes |
 |---|---|---|
 | `series` | yes | Series name; groups events together |
-| `round_format` | yes | Must be identical for every row in a series (e.g. `300`) |
+| `round_format` | yes | Must be identical for every row in a series (Texas Ringer: `420`); a numeric value also caps `total_score` |
 | `usa_archery_no` | yes | Stable archer identity across events |
 | `archer_name` | yes | Display name |
 | `division` | yes | Texas Ringer: `Recurve`, `Barebow`, `Freestyle Compound`, `Bowhunter` |
@@ -64,7 +68,7 @@ One row per archer per event. Header required; column order does not matter.
 | `event_name` | yes | Display name |
 | `event_date` | yes | ISO `YYYY-MM-DD` |
 | `total_score` | yes | Whole number |
-| `arrows` | no | Space/semicolon-separated arrow values (e.g. `10 9 9 7`); enables the "most 7s" tiebreaker |
+| `arrows` | no | Space/semicolon-separated arrow values, each 0–7 (e.g. `7 7 6 5 …`), must sum to `total_score`; enables the "most 7s" tiebreaker |
 
 See [`examples/sample-series.csv`](examples/sample-series.csv).
 

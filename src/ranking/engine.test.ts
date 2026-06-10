@@ -91,9 +91,9 @@ describe('rankSegment — ordering and tiebreakers', () => {
   })
 
   it('breaks a deeper tie by most 7s when arrow data is present', () => {
-    // Identical totals and counted scores; A shot more 7s.
-    const aArrows = [7, 7, 7, 9, 9, 9]
-    const bArrows = [7, 9, 9, 9, 9, 9]
+    // Identical totals and counted scores; A shot more 7s (the top ring).
+    const aArrows = [7, 7, 7, 5, 5, 5]
+    const bArrows = [7, 5, 6, 6, 6, 6]
     const ranked = rankSegment([
       archer('B', 'B', [
         score('1', 100, '2026-01-01', bArrows),

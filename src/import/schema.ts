@@ -18,8 +18,11 @@ export const REQUIRED_HEADERS = [
 /** Zero-width characters that survive trim() and split archer identities. */
 const INVISIBLE_CHARS = /[​-‍⁠﻿]/g
 
-/** Highest value a single arrow can score (12-ring exists in 3D rounds). */
-export const MAX_ARROW_VALUE = 12
+/**
+ * Highest value a single arrow can score. Texas Ringer round: 60 arrows,
+ * each scoring 7 down to 1 (0 = miss), maximum total 420.
+ */
+export const MAX_ARROW_VALUE = 7
 
 function isRealCalendarDate(iso: string): boolean {
   const [y, m, d] = iso.split('-').map(Number)

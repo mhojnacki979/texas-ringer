@@ -76,13 +76,13 @@ describe.runIf(hasTestDb())('importScoresFromCsv', () => {
   it('persists arrow values as space-separated strings round-trippable to numbers', async () => {
     const withArrows = [
       'series,round_format,usa_archery_no,archer_name,division,gender,age_class,event_id,event_name,event_date,total_score,arrows',
-      'Arrow Series,300,USA900,Fletch Tester,Barebow,Male,Senior,A1,Arrow Open,2026-02-01,57,10 10 9 9 9 7 3',
+      'Arrow Series,420,USA900,Fletch Tester,Barebow,Men,Adults,A1,Arrow Open,2026-02-01,38,7 7 6 6 5 4 3',
     ].join('\n')
     await importScoresFromCsv(withArrows, db.client)
 
     const score = await db.client.score.findFirst({
       where: { usaArcheryNo: 'USA900' },
     })
-    expect(score?.arrows).toBe('10 10 9 9 9 7 3')
+    expect(score?.arrows).toBe('7 7 6 6 5 4 3')
   })
 })

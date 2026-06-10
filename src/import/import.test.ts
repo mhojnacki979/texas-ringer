@@ -47,9 +47,9 @@ describe('importCsv — happy path', () => {
   })
 
   it('parses the arrows column into per-arrow integers', () => {
-    const csv = [HEADER, row({ arrows: '10 9 9 7', total_score: '35' })].join('\n')
+    const csv = [HEADER, row({ arrows: '7 6 5 4', total_score: '22' })].join('\n')
     const entries = importCsv(csv).entriesBySeries.get('Spring 2026')!
-    expect(entries[0]!.scores[0]!.arrows).toEqual([10, 9, 9, 7])
+    expect(entries[0]!.scores[0]!.arrows).toEqual([7, 6, 5, 4])
   })
 
   it('keeps the same archer in two divisions as two separate entries', () => {
@@ -121,10 +121,10 @@ describe('importCsv — validation', () => {
   })
 
   it('rejects arrows out of range and arrows that do not sum to the total', () => {
-    const outOfRange = [HEADER, row({ arrows: '13 9', total_score: '22' })].join('\n')
+    const outOfRange = [HEADER, row({ arrows: '8 7', total_score: '15' })].join('\n')
     expect(importCsv(outOfRange).errors.some((e) => /between 0 and/.test(e.message))).toBe(true)
 
-    const badSum = [HEADER, row({ arrows: '10 9', total_score: '290' })].join('\n')
+    const badSum = [HEADER, row({ arrows: '7 6', total_score: '290' })].join('\n')
     expect(importCsv(badSum).errors.some((e) => /must match/.test(e.message))).toBe(true)
   })
 
