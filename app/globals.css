@@ -127,14 +127,14 @@ button:focus-visible {
 }
 
 .wordmark-logo {
-  height: 3rem;
+  height: 5.5rem;
   width: auto;
   display: block;
 }
 
 @media (max-width: 600px) {
   .wordmark-logo {
-    height: 2.3rem;
+    height: 3.25rem;
   }
 }
 

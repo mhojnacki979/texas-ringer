@@ -57,9 +57,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Link href="/" className="site-nav-link">
                 Results
               </Link>
-              <a href="https://www.texasringer.com" className="site-nav-link">
-                Register
-              </a>
             </nav>
           </div>
         </header>
