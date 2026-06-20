@@ -2,11 +2,19 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getEvent } from '@/data/events'
+import { listEvents } from '@/data/events'
 import { EventBoards } from './event-boards'
 
 export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
+
+// Pre-render one static page per event year; reject any other year.
+export function generateStaticParams() {
+  return listEvents().map((e) => ({ year: String(e.year) }))
+}
+
+export const dynamicParams = false
 
 interface EventPageProps {
   params: Promise<{ year: string }>
