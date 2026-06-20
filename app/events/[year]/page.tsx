@@ -27,8 +27,8 @@ export default async function EventPage({ params }: EventPageProps) {
 
   return (
     <>
-      <Link href="/events" className="back-link">
-        ← All events
+      <Link href="/" className="back-link">
+        ← All results
       </Link>
       <span className="eyebrow">{event.venue} · {event.date}</span>
       <h1 className="page-title">{event.name}</h1>
