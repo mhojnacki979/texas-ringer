@@ -39,20 +39,6 @@ export const metadata: Metadata = {
     'The Texas Ringer — a flagship annual archery tournament. Brackets, champions, and results, powered by Eyes on Score.',
 }
 
-/** Official Texas Ringer arrowhead mark (Texas flag + feather). */
-function RingerMark() {
-  // Plain img: next/image doesn't basePath-prefix under output:'export'.
-  return (
-    <img
-      src={asset('/brand/ringer-antlers-white.png')}
-      alt=""
-      width={42}
-      height={38}
-      className="wordmark-target"
-    />
-  )
-}
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   const fontClasses = `${playfair.variable} ${barlow.variable} ${saira.variable} ${anton.variable}`
   return (
@@ -61,12 +47,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <header className="site-header">
           <div className="site-header-inner">
             <Link href="/" className="wordmark" aria-label="The Texas Ringer">
-              <span className="wordmark-year">2026</span>
-              <span className="wordmark-lockup">
-                <span className="wordmark-navy">TEXAS</span>
-                <RingerMark />
-                <span className="wordmark-red">RINGER</span>
-              </span>
+              <img
+                src={asset('/brand/ringer-wordmark.png')}
+                alt="2026 Texas Ringer"
+                className="wordmark-logo"
+              />
             </Link>
             <nav className="site-nav" aria-label="Primary">
               <Link href="/" className="site-nav-link">

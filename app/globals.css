@@ -118,8 +118,7 @@ button:focus-visible {
 /* Varsity wordmark lockup */
 .wordmark {
   display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   line-height: 1;
 }
 
@@ -127,45 +126,16 @@ button:focus-visible {
   text-decoration: none;
 }
 
-.wordmark-year {
-  font-family: var(--font-heavy);
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
-  color: var(--red);
-  -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.85);
-  paint-order: stroke fill;
-  margin: 0 0 3px 2px;
-}
-
-.wordmark-lockup {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.wordmark-navy,
-.wordmark-red {
-  font-family: var(--font-heavy);
-  font-size: 1.85rem;
-  font-style: italic;
-  letter-spacing: 0.01em;
-  -webkit-text-stroke: 1px #fff;
-  paint-order: stroke fill;
-}
-
-.wordmark-navy {
-  color: var(--navy);
-}
-
-.wordmark-red {
-  color: var(--red);
-}
-
-.wordmark-target {
+.wordmark-logo {
+  height: 3rem;
   width: auto;
-  height: 2.4rem;
-  flex: none;
-  transform: translateY(2px);
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .wordmark-logo {
+    height: 2.3rem;
+  }
 }
 
 .site-nav {
