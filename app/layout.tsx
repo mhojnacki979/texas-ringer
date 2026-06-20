@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { Anton, Barlow, Playfair_Display, Saira_Condensed } from 'next/font/google'
-import Image from 'next/image'
 import Link from 'next/link'
+import { asset } from '@/lib/asset'
 import './globals.css'
 
 // Editorial Didone headline — "More than Archery, It's an Experience" energy.
@@ -41,14 +41,14 @@ export const metadata: Metadata = {
 
 /** Official Texas Ringer arrowhead mark (Texas flag + feather). */
 function RingerMark() {
+  // Plain img: next/image doesn't basePath-prefix under output:'export'.
   return (
-    <Image
-      src="/brand/ringer-antlers-white.png"
+    <img
+      src={asset('/brand/ringer-antlers-white.png')}
       alt=""
       width={42}
       height={38}
       className="wordmark-target"
-      priority
     />
   )
 }

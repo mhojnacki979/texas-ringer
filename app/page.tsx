@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { listEvents } from '@/data/events'
+import { asset } from '@/lib/asset'
 
 const EVENT_FEATURES = [
   {
@@ -24,13 +24,12 @@ const EVENT_FEATURES = [
 function Hero() {
   return (
     <section className="hero">
-      <Image
-        src="/brand/ringer-antlers-white.png"
+      <img
+        src={asset('/brand/ringer-antlers-white.png')}
         alt=""
         width={442}
         height={400}
         className="hero-mark"
-        priority
       />
       <div className="hero-copy">
         <span className="eyebrow">The Texas Ringer</span>
