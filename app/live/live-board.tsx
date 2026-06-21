@@ -2,7 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react'
 import type { EventDivision } from '@/data/events'
-import { fetchLive, fetchShooterEnds, type LiveData, type ShooterDetail } from '@/lib/eos'
+import {
+  fetchLive,
+  fetchShooterEnds,
+  type EndScore,
+  type LiveData,
+  type ShooterDetail,
+} from '@/lib/eos'
 import type { LiveTournament } from '@/lib/live-config'
 import { DivisionBracket } from '../events/[year]/division-bracket'
 
@@ -11,6 +17,10 @@ const POLL_MS = 20_000
 interface Selected {
   id: string
   name: string
+}
+
+function maxArrows(ends: EndScore[]): number {
+  return ends.reduce((m, e) => Math.max(m, e.arrows.length), 0)
 }
 
 function StandingsTable({
@@ -106,30 +116,36 @@ function ShooterModal({
         {!error && detail === null && <p className="muted">Loading scorecard…</p>}
         {detail && detail.ends.length === 0 && <p className="muted">No ends scored yet.</p>}
         {detail && detail.ends.length > 0 && (
-          <div className="table-wrap">
-            <table className="board-table">
-              <thead>
-                <tr>
-                  <th>End</th>
-                  <th>Arrows</th>
-                  <th className="cell-num">End</th>
-                  <th className="cell-num">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {detail.ends.map((e) => (
-                  <tr key={e.label}>
-                    <td>{e.label}</td>
-                    <td className="mono">{e.arrows.join('  ')}</td>
-                    <td className="cell-num mono">{e.score}</td>
-                    <td className="cell-num">
-                      <span className="score-total">{e.running}</span>
-                    </td>
-                  </tr>
+          <table className="scorecard">
+            <thead>
+              <tr>
+                <th>End</th>
+                {Array.from({ length: maxArrows(detail.ends) }, (_, i) => (
+                  <th key={i} className="sc-arrow">
+                    {i + 1}
+                  </th>
                 ))}
-              </tbody>
-            </table>
-          </div>
+                <th className="sc-num">Score</th>
+                <th className="sc-num">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {detail.ends.map((e, idx) => (
+                <tr key={e.label}>
+                  <td className="sc-end">{idx + 1}</td>
+                  {Array.from({ length: maxArrows(detail.ends) }, (_, i) => (
+                    <td key={i} className="sc-arrow mono">
+                      {e.arrows[i] ?? ''}
+                    </td>
+                  ))}
+                  <td className="sc-num mono">{e.score}</td>
+                  <td className="sc-num">
+                    <span className="score-total">{e.running}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         )}
       </div>
     </div>
