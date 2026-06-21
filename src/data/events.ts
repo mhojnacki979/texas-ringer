@@ -7,6 +7,7 @@
  */
 import event2024 from './events/2024.json'
 import event2025 from './events/2025.json'
+import event2026 from './events/2026.json'
 
 export interface EventQualRow {
   rank: number
@@ -53,9 +54,15 @@ export interface AnnualEvent {
   date: string
   archers: number
   divisions: EventDivision[]
+  /** Listed before the event has scores — shows "Scores coming soon!". */
+  comingSoon?: boolean
 }
 
-const EVENTS: AnnualEvent[] = [event2025 as AnnualEvent, event2024 as AnnualEvent]
+const EVENTS: AnnualEvent[] = [
+  event2026 as AnnualEvent,
+  event2025 as AnnualEvent,
+  event2024 as AnnualEvent,
+]
 
 export function listEvents(): AnnualEvent[] {
   return EVENTS

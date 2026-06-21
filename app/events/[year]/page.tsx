@@ -25,6 +25,19 @@ export default async function EventPage({ params }: EventPageProps) {
   const event = getEvent(Number(year))
   if (event === null) notFound()
 
+  if (event.comingSoon) {
+    return (
+      <>
+        <Link href="/" className="back-link">
+          ← All results
+        </Link>
+        <span className="eyebrow">{event.venue}</span>
+        <h1 className="page-title">{event.name}</h1>
+        <p className="page-subtitle">Scores coming soon!</p>
+      </>
+    )
+  }
+
   return (
     <>
       <Link href="/" className="back-link">

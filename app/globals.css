@@ -556,6 +556,23 @@ a.button:hover {
   color: #fff;
 }
 
+/* Upcoming event — no scores yet */
+.series-card-soon {
+  border-style: dashed;
+  border-color: var(--accent-border);
+}
+
+.series-card-soon-badge {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-family: var(--font-condensed);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
 .series-card-format {
   color: var(--text-muted);
   font-family: var(--font-condensed);
