@@ -396,6 +396,85 @@ a.button:hover {
   color: var(--text-muted);
 }
 
+.standings-hint {
+  font-family: var(--font-condensed);
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.6rem;
+}
+
+/* Clickable archer name (opens the end-score scorecard) */
+.archer-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  color: var(--text);
+  text-align: left;
+}
+
+.archer-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Scorecard modal ---------- */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5vh 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  overflow-y: auto;
+}
+
+.modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: var(--text);
+}
+
+.modal-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: #fff;
+  margin: 0 0 0.25rem;
+}
+
+.modal-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
 /* ---------- Series index cards ---------- */
 
 .series-grid {

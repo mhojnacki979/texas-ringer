@@ -13,6 +13,8 @@ export interface EventQualRow {
   name: string
   avg: string
   score: number
+  /** EOS shooter id — present for live data, enables the end-score lookup. */
+  shooterId?: string
 }
 
 /** One archer's side of a head-to-head match. */

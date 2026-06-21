@@ -20,6 +20,18 @@ async function post(path: string): Promise<any> {
   return json.data
 }
 
+/** Some EOS endpoints (shooter detail) expect form-encoded bodies. */
+async function postForm(path: string, body: Record<string, string>): Promise<any> {
+  const res = await fetch(`${API}/${path}`, {
+    method: 'POST',
+    headers: { Authorization: TOKEN, 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(body).toString(),
+  })
+  const json = await res.json()
+  if (json.status_code !== 200) throw new Error(json.message ?? `EOS ${res.status}`)
+  return json.data
+}
+
 function toInt(v: unknown): number {
   const n = Number(v)
   return Number.isFinite(n) ? Math.trunc(n) : 0
@@ -76,6 +88,7 @@ export async function fetchLive(tournamentId: string): Promise<LiveData> {
         name: String(r.name ?? '').trim(),
         avg: String(r.avg_count ?? r.arr_avg ?? ''),
         score: toInt(r.total_score),
+        shooterId: String(r.shooter_id ?? ''),
       }))
 
       // Bracket (only if this division's elimination has started).
@@ -105,4 +118,67 @@ export async function fetchLive(tournamentId: string): Promise<LiveData> {
   )
 
   return { divisions, updatedAt: Date.now() }
+}
+
+export interface EndScore {
+  label: string
+  arrows: number[]
+  /** Points scored this end. */
+  score: number
+  /** Cumulative total through this end. */
+  running: number
+}
+
+export interface ShooterDetail {
+  name: string
+  total: number
+  avg: string
+  target: string
+  ends: EndScore[]
+}
+
+function arrowsOf(end: any): number[] {
+  return Object.keys(end)
+    .filter((k) => /^arrow\d+$/.test(k))
+    .sort((a, b) => Number(a.slice(5)) - Number(b.slice(5)))
+    .map((k) => toInt(end[k]?.score))
+}
+
+/** A shooter's end-by-end / arrow-by-arrow scorecard for one tournament. */
+export async function fetchShooterEnds(
+  tournamentId: string,
+  shooterId: string,
+): Promise<ShooterDetail> {
+  const d = await postForm('shooter_details_by_score', {
+    shooter_id: shooterId,
+    tournament_id: tournamentId,
+  })
+
+  const ends: EndScore[] = []
+  for (const slot of d.slot_list ?? []) {
+    for (const round of slot.round_score_list ?? []) {
+      Object.keys(round)
+        .filter((k) => /^end\d+$/.test(k))
+        .sort((a, b) => Number(a.slice(3)) - Number(b.slice(3)))
+        .forEach((k) => {
+          const end = round[k]
+          if (end && typeof end === 'object') {
+            ends.push({
+              label: `End ${ends.length + 1}`,
+              arrows: arrowsOf(end),
+              score: toInt(end.per_end_total ?? end.end_total),
+              running: toInt(end.end_total ?? end.per_end_total),
+            })
+          }
+        })
+    }
+  }
+
+  return {
+    name: String(d.shooter_name ?? '').trim(),
+    total: toInt(d.total_score),
+    avg: String(d.avg_count ?? ''),
+    target: String(d.target_name_position ?? ''),
+    ends,
+  }
 }
