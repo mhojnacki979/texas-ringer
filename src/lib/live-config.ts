@@ -11,7 +11,6 @@ export interface LiveTournament {
   name: string
 }
 
-export const LIVE_TOURNAMENT: LiveTournament | null = {
-  id: 'cXJTNytXU0JtaXE1VkhGeE9RTWlHdz09',
-  name: 'Texas Archery League Night',
-}
+// No event live right now. To go live, set this to { id, name } and push;
+// set back to null when the event ends.
+export const LIVE_TOURNAMENT: LiveTournament | null = null
