@@ -468,6 +468,11 @@ a.button:hover {
   font-weight: 600;
 }
 
+.scorecard th:first-child,
+.scorecard .sc-end {
+  width: 2.4rem;
+}
+
 .scorecard .sc-end {
   font-family: var(--font-condensed);
   font-weight: 700;
