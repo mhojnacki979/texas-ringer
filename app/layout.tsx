@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { Anton, Barlow, Playfair_Display, Saira_Condensed } from 'next/font/google'
-import Link from 'next/link'
-import { asset } from '@/lib/asset'
+import { SiteHeader, SiteFooter } from './site-chrome'
 import './globals.css'
 
 // Editorial Didone headline — "More than Archery, It's an Experience" energy.
@@ -44,30 +43,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={fontClasses}>
       <body>
-        <header className="site-header">
-          <div className="site-header-inner">
-            <Link href="/" className="wordmark" aria-label="The Texas Ringer">
-              <img
-                src={asset('/brand/ringer-wordmark.png')}
-                alt="2026 Texas Ringer"
-                className="wordmark-logo"
-              />
-            </Link>
-            <nav className="site-nav" aria-label="Primary">
-              <a href="https://www.texasringer.com" className="site-nav-link">
-                Home
-              </a>
-              <Link href="/live" className="site-nav-link">
-                Live
-              </Link>
-              <Link href="/" className="site-nav-link">
-                Results
-              </Link>
-            </nav>
-          </div>
-        </header>
+        <SiteHeader />
         <main className="site-main">{children}</main>
-        <footer className="site-footer">The Texas Ringer · Powered by Eyes on Score</footer>
+        <SiteFooter />
       </body>
     </html>
   )

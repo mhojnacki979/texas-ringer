@@ -14,7 +14,8 @@
     "start": "next start -p ${PORT:-3000}",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "sync:events": "node --env-file=.env --import tsx scripts/sync-events.ts"
+    "sync:events": "node --env-file=.env --import tsx scripts/sync-events.ts",
+    "sync:hlsr": "node --import tsx scripts/sync-hlsr.ts"
   },
   "dependencies": {
     "next": "^15.3.0",
